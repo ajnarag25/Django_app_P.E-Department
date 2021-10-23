@@ -9,7 +9,7 @@ body{
 .title{
     font-weight: 700;
     color: rgb(24, 99, 43);
-    
+    padding-top: 10px;
 }
 .nav-link{
     font-weight: 600;
