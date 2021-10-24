@@ -5,36 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P.E Department</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <h3>P.E Department</h3>
-        <ul>
-            <li>Home</li>
-            <li>Services</li>
-            <li>About</li>
-            <li>Contact</li>
-        </ul>
-    </nav>
+    {% include "navbar.html" %}
 
-
-    <h3>Services</h3>
-    <ul>
-        <li>Buy</li>
-        <li>Reserve</li>
-        <li>Borrow</li>
-    </ul>
-
-    <h3>About</h3>
-    <p>P.E Department description</p>
-
-    <h3>Contact</h3>
-    <h4>Phone: 09154565451</h4>
-    <h4>Email: sample@gmail.com</h4>
-    <h4>Message</h4>
-    <textarea></textarea>
-    <button>Submit</button>
+    <div style="background-image: url('assets/home-bg.jpg'); height: 500px; background-size: cover;">
+        <div class="container main-container">
+            <h1>Welcome to P.E Department</h1>
+            <p>This is to provide a service where you can now buy a uniform, reserve, and borrow an equipments <br>
+                 in the department the choice is yours.</p>
+            <button class="button-custom">Explore</button>
+        </div>
+    </div>
     
+    <br>
+    <br>
+
+    <div class="container">
+        <h3>Services</h3>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h3>Buy</h3>
+            </div>
+            <div class="col">
+                <h3>Reserve</h3>
+            </div>
+            <div class="col">
+                <h3>Borrow</h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/445d09784c.js"></script>
 
 </body>
 </html>
