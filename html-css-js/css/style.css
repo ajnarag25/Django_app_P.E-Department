@@ -15,16 +15,18 @@ h3{
 /*NAVIGATION*/
 .title{
     font-weight: 700;
-    color: rgb(24, 99, 43);
     padding-top: 10px;
 }
 .nav-link{
-    font-weight: 600;
+    font-weight: 500;
     margin-left: 15px;
     font-size: 15px;
 }
+#link{
+    color: white;
+}
 #link:hover{
-    color: rgb(24, 99, 43);
+    color: rgb(160, 211, 173);
 }
 
 
