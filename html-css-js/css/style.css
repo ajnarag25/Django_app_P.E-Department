@@ -9,6 +9,9 @@ hr{
     border-top: 1px solid white;
     width: 10%;
 }
+h3{
+    color: white;
+}
 /*NAVIGATION*/
 .title{
     font-weight: 700;
