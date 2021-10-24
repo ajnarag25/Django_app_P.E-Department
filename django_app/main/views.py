@@ -4,3 +4,12 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return render(request, "index.html")
+
+def buy(request):
+    return render(request, "buy.html")
+
+def reserve(request):
+    return render(request, "reserve.html")
+
+def borrow(request):
+    return render(request, "borrow.html")
