@@ -3,8 +3,12 @@ html{
 }
 body{
     font-family: 'Heebo', sans-serif;
+    background-color: #15241f;
 }
-
+hr{
+    border-top: 1px solid white;
+    width: 10%;
+}
 /*NAVIGATION*/
 .title{
     font-weight: 700;
@@ -14,7 +18,7 @@ body{
 .nav-link{
     font-weight: 600;
     margin-left: 15px;
-    font-size: 17px;
+    font-size: 15px;
 }
 #link:hover{
     color: rgb(24, 99, 43);
@@ -35,12 +39,62 @@ body{
     width: 100px;
     background-color : rgb(36, 114, 56);
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
+    box-shadow: 3px 3px #39473e;
 }
 .button-custom:hover{
     background-color: rgb(39, 124, 60);
+    transition: .3s;
+}
+
+/*SERVICES*/
+.service-container{
+    color: white;
+}
+
+.card{
+    padding: 30px;
+    background-color: #1b2e28;
+    border-radius: 50px;
+    box-shadow: 7px 7px #18221f;
+}
+.card i{
+    color: #a6c9b1;
+}
+.card h3{
+    font-weight: 600;
+}
+
+/*ABOUT*/
+.bg-custom{
+    background-image: linear-gradient(to top, #171a1e, #0e2127, #002829, #032e21, #1b3212);
+    color: white;
+    text-align: center;
+}
+
+/*CONTACT*/
+.contact-container{
+    color: white;
+}
+.content{
+    display: flex;
+}
+.content p{
+    margin-left: 10px;
 }
 
 
-
+/*FOOTER*/
+footer {
+    padding: 2em; }
+  
+.footer-part {
+    background: #121212; 
+}
+.footer-part a {
+    color: #008036; 
+}
+.footer-part p {
+    color: rgba(255, 255, 255, 0.3); 
+}
