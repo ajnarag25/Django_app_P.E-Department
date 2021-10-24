@@ -1,0 +1,46 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Heebo', sans-serif;
+}
+
+/*NAVIGATION*/
+.title{
+    font-weight: 700;
+    color: rgb(24, 99, 43);
+    padding-top: 10px;
+}
+.nav-link{
+    font-weight: 600;
+    margin-left: 15px;
+    font-size: 17px;
+}
+#link:hover{
+    color: rgb(24, 99, 43);
+}
+
+
+/*MAIN*/
+.main-container{
+    padding-top: 130px;
+    color: white;
+}
+.main-container h1{
+    font-weight: 600;
+    font-size: 50px;
+}
+.button-custom{
+    padding: 10px;
+    width: 100px;
+    background-color : rgb(36, 114, 56);
+    color: white;
+    border-radius: 20px;
+    border: none;
+}
+.button-custom:hover{
+    background-color: rgb(39, 124, 60);
+}
+
+
+
