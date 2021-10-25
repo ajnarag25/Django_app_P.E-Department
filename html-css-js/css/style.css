@@ -56,7 +56,6 @@ hr{
 }
 
 
-
 /*SERVICES*/
 .service-container h3{
     font-size: 35px;
@@ -82,6 +81,22 @@ hr{
     color: rgb(114, 47, 47);
 }
 
+/*MAP*/
+.map-link card{
+    transform: scale(1.03);
+}
+
+/*CONTACT*/
+.content{
+    display: flex;
+}
+.content i:hover{
+    color: rgb(114, 47, 47);
+}
+.content p{
+    font-size: 25px;
+    margin-left: 10px;
+}
 
 
 /*FOOTER*/
