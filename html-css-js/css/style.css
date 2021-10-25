@@ -28,6 +28,10 @@ hr{
     color: white;
 }
 
+#link:hover{
+    transform: scale(1.03);
+}
+
 
 /*MAIN*/
 .main-container h1{
@@ -81,10 +85,7 @@ hr{
     color: rgb(114, 47, 47);
 }
 
-/*MAP*/
-.map-link card{
-    transform: scale(1.03);
-}
+
 
 /*CONTACT*/
 .content{
@@ -101,11 +102,9 @@ hr{
 
 /*FOOTER*/
 footer {
-    padding: 1.5em; }
-  
-.footer-part {
-    background: rgb(114, 47, 47); 
+    padding: 1.5em; 
 }
 .footer-part p {
+    font-size: 15px;
     color: white; 
 }
