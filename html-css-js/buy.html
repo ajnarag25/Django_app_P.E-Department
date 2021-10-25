@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Uniform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom sticky-top">
         <div class="container">
             <h4 class="title">P.E Department</h4>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,15 +21,6 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" id="link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="link" href="#service">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="link" href="">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="link" href="">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="link" href="">Login</a>
@@ -46,7 +37,112 @@
     <br>
     
     <div class="container">
-        <h3 class="text-center">BUY</h3>
+        <div class="card">
+            <div class="card-title">Buy Uniform</div>
+            <div class="card-body">
+                <form action="">
+                    <div class="form-row">
+                        <div class="name">I.D Number</div>
+                        <div class="value">
+                            <input class="input--style-5" type="text" name="idnumber" placeholder="TUPC-XX-XXXX">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Full Name</div>
+                        <div class="value">
+                            <input class="input--style-5" type="text" name="full_name" placeholder="Juan Dela Cruz">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Email address</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="email" name="email" placeholder="example@email.com">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-row">
+                        <div class="name">Cellphone Number</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="cellnumber" placeholder="09-xxx-xxx-xxx">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-gen">
+                        <div class="name">Gender</div>
+                            <div class="value">
+                                <div class="form-name1"><label class="form-name">Male</label>
+                                <input  style="cursor:pointer;" type="radio" name="radio"></div>
+                                <div class="form-name1"><label>Female</label>
+                                <input style="cursor:pointer;" type="radio" name="radio"></div>
+                             </div>
+                    </div>
+                      <div class="form-row">
+                        <div class="name">Course</div>
+                            <div class="input-group">
+                                <select class="name" id="course" name="course" style="font-size: 15px;">
+                                     <option>BET-COET</option>
+                                    <option>BET-MT</option>
+                                    <option>BET-AT</option>
+                                    <option>BS-IE</option>
+                                 </select>
+                         </div>
+                    </div>
+                      <div class="form-row">
+                        <div class="name">Strand</div>
+                            <div class="input-group">
+                                <select class="name" id="strand" name="strand" style="font-size: 15px;">
+                                     <option>STEM</option>
+                                    <option>NON-STEM</option>
+                                    <option>NO STRAND</option>
+                                 </select>
+                             </div>
+                    </div>
+                       <div class="form-gen">
+                        <div class="name">Uniform Info<br>*Please input a value for Shirt, Short, and Joggingpant each has only a maximum of 5* </div>
+                            <div class="input-group">
+                                <div class="form-name1"><label class="name">SHIRT:</label>
+                                <input type="number" value="1" min="0" max="5" name="shirt" style="width: 20%;"></div>
+                             <div class="form-name1"><br><label class="name">SHORT:</label>
+                                <input type="number" value="1" min="0" max="5" name="shirt" style="width: 20%;"></div>
+                              <div class="form-name1"><br><label class="name">JOGGINGPANT:</label>
+                                <input type="number" value="1" min="0" max="5" name="shirt" style="width: 20%;"></div>
+                        </div>  
+                    </div>
+                       <div class="form-row">
+                        <div class="name">Size</div>
+                            <div class="input-group">
+                                <select class="name" id="strand" name="strand" style="font-size: 15px;">
+                                     <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                 </select>
+                             </div>
+                    </div>
+                      <div class="form-gen">
+                        <div class="name">Lower<br>*Female Student can't avail shorts</div>
+                        <div class="input-group">
+                                <select class="name" id="strand" name="strand" style="font-size: 15px;">
+                                     <option>Joggingpant</option>
+                                    <option>Short</option>
+                                 </select>
+                             </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Upload image<br>*optional*</div>
+                        <div class="value">
+                            <div class="input-group js-input-file">
+                                <input class="input-file" type="file" name="file_cv" id="file">
+                                <label class="label--file" for="file">Choose file</label>
+                                <span class="input-file__info">No file chosen</span>
+                            </div>
+                            <div class="label--desc">Upload your photo/image for account verification. Max file size 5 MB</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     

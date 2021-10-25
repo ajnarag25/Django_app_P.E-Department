@@ -2,7 +2,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 hr{
     border-top: 1px solid black;
@@ -17,9 +17,12 @@ hr{
     padding-top: 10px;
     color: white;
 }
+.title img{
+    width: 40px;
+}
 .nav-link{
     margin-left: 15px;
-    font-size: 15px;
+    font-size: 17px;
 }
 #link{
     color: white;
@@ -28,14 +31,17 @@ hr{
 
 /*MAIN*/
 .main-container h1{
+    padding-top: 130px;
+    color: white;
     font-size: 50px;
 }
 .main-container p{
+    color: white;
     font-size: 20px;
 }
 .button-custom{
     padding: 10px;
-    width: 120px;
+    width: 320px;
     background-color : rgb(114, 47, 47);
     color: white;
     border: none;
