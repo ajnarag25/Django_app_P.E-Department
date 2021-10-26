@@ -42,119 +42,122 @@
         </div>
     </nav>
 
+    <div class="jumbotron">
+        <div class="container">
+            <div class="card card-buy">
+                <div class="text-center">
+                    <h2 class="">Buy Uniform</h2>
+                    <hr>
+                    <p>Please fill-up the neccessary informations needed in order to validate your order.</p>
+                </div>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id">I.D Number</label>
+                            <input type="text" class="form-control" id="idnum" placeholder="Enter I.D Number" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" class="form-control" id="fullname" placeholder="Enter Fullname" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="contact">Contact Number</label>
+                            <input type="text" class="form-control" id="contact" placeholder="Enter Contact Number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="contact">Gender:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="radio" value="option1" checked>
+                                <label class="form-check-label" for="radio">Male</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="radio" value="option2">
+                                <label class="form-check-label" for="female">Female</label>
+                              </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="course">Course</label>
+                            <select id="course" class="form-control" >
+                                <option>BET-COET</option>
+                                <option>BET-MT</option>
+                                <option>BET-AT</option>
+                                <option>BS-IE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="strand">Strand</label>
+                            <select id="strand" class="form-control" >
+                                <option>STEM</option>
+                                <option>NON-STEM</option>
+                                <option>NO-STRAND</option>
+                            </select>
+                        </div>
+                    </div>
 
-    <br>
-    <br>
-    
-    <div class="container">
-        <div class="card">
-            <div class="card-title">Buy Uniform</div>
-            <div class="card-body">
-                <form action="">
+                    <br>
+                    <h3 class="text-center">Uniform Details</h3>
+                    <hr>
+                    <h6 class="text-center">Uniform information <br> 
+                        *Please Input a value for shirt, short, slacks, joggingpant each has only a maximum of 5*</h6>
+                    <br>
+
                     <div class="form-row">
-                        <div class="name">I.D Number</div>
-                        <div class="value">
-                            <input class="input--style-5" type="text" name="idnumber" placeholder="TUPC-XX-XXXX">
+                        <div class="form-group col-md-3">
+                            <label for="shirt">Shirts</label>
+                            <input type="number" class="form-control" value="1" min="0" max="5" name="shirt">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="shirt">Shorts</label>
+                            <input type="number" class="form-control" value="1" min="0" max="5" name="shirt">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="shirt">Slacks</label>
+                            <input type="number" class="form-control" value="1" min="0" max="5" name="shirt">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="shirt">Joggingpants</label>
+                            <input type="number" class="form-control" value="1" min="0" max="5" name="shirt">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="name">Full Name</div>
-                        <div class="value">
-                            <input class="input--style-5" type="text" name="full_name" placeholder="Juan Dela Cruz">
-                        </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Size</label>
+                        <select id="course" class="form-control" >
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                        </select>
                     </div>
-                    <div class="form-row">
-                        <div class="name">Email address</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <input class="input--style-5" type="email" name="email" placeholder="example@email.com">
-                            </div>
-                        </div>
-                    </div>
-                     <div class="form-row">
-                        <div class="name">Cellphone Number</div>
-                        <div class="value">
-                            <div class="input-group">
-                                <input class="input--style-5" type="text" name="cellnumber" placeholder="09-xxx-xxx-xxx">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-gen">
-                        <div class="name">Gender</div>
-                            <div class="value">
-                                <div class="form-name1"><label class="form-name">Male</label>
-                                <input  style="cursor:pointer;" type="radio" name="radio"></div>
-                                <div class="form-name1"><label>Female</label>
-                                <input style="cursor:pointer;" type="radio" name="radio"></div>
-                             </div>
-                    </div>
-                      <div class="form-row">
-                        <div class="name">Course</div>
-                            <div class="input-group">
-                                <select class="name" id="course" name="course" style="font-size: 15px;">
-                                     <option>BET-COET</option>
-                                    <option>BET-MT</option>
-                                    <option>BET-AT</option>
-                                    <option>BS-IE</option>
-                                 </select>
-                         </div>
-                    </div>
-                      <div class="form-row">
-                        <div class="name">Strand</div>
-                            <div class="input-group">
-                                <select class="name" id="strand" name="strand" style="font-size: 15px;">
-                                     <option>STEM</option>
-                                    <option>NON-STEM</option>
-                                    <option>NO STRAND</option>
-                                 </select>
-                             </div>
-                    </div>
-                       <div class="form-gen">
-                        <div class="name">Uniform Info<br>*Please input a value for Shirt, Short, and Joggingpant each has only a maximum of 5* </div>
-                            <div class="input-group">
-                                <div class="form-name1"><label class="name">SHIRT:</label>
-                                <input type="number" value="1" min="0" max="5" name="shirt" style="width: 20%;"></div>
-                             <div class="form-name1"><br><label class="name">SHORT:</label>
-                                <input type="number" value="1" min="0" max="5" name="shirt" style="width: 20%;"></div>
-                              <div class="form-name1"><br><label class="name">JOGGINGPANT:</label>
-                                <input type="number" value="1" min="0" max="5" name="shirt" style="width: 20%;"></div>
-                        </div>  
-                    </div>
-                       <div class="form-row">
-                        <div class="name">Size</div>
-                            <div class="input-group">
-                                <select class="name" id="strand" name="strand" style="font-size: 15px;">
-                                     <option>Small</option>
-                                    <option>Medium</option>
-                                    <option>Large</option>
-                                 </select>
-                             </div>
-                    </div>
-                      <div class="form-gen">
-                        <div class="name">Lower<br>*Female Student can't avail shorts</div>
-                        <div class="input-group">
-                                <select class="name" id="strand" name="strand" style="font-size: 15px;">
-                                     <option>Joggingpant</option>
-                                    <option>Short</option>
-                                 </select>
-                             </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Upload image<br>*optional*</div>
-                        <div class="value">
-                            <div class="input-group js-input-file">
-                                <input class="input-file" type="file" name="file_cv" id="file">
-                                <label class="label--file" for="file">Choose file</label>
-                                <span class="input-file__info">No file chosen</span>
-                            </div>
-                            <div class="label--desc">Upload your photo/image for account verification. Max file size 5 MB</div>
-                        </div>
+                    <br>
+                
+                    <div class="text-center">
+                        <button type="submit" class="button-custom responsive-custom-btn">Submit Order</button>
+                        <hr>
                     </div>
                 </form>
             </div>
+          </div>
         </div>
-    </div>
-
+    
+    <footer class="bg-dark footer-part">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <p class="lead">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by P.E Department
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
