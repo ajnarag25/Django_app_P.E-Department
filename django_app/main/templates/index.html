@@ -3,26 +3,25 @@
 
 {% block content %}
 
-    <div style="background-image: url('{% static "media/home-bg.jpg" %}'); height: 500px; background-size: cover;">
-        <div class="container main-container">
-            <h1>Welcome to P.E Department</h1>
-            <p>This is to provide a service where you can now buy a uniform, reserve, and borrow an equipments <br>
-                    in the department the choice is yours.</p>
-            <button class="button-custom">Explore</button>
+    <div class="" style="background-image: url('{% static "media/tupc-bg.jpg" %}'); height: 500px; background-size: cover;">
+        <div class="container main-container text-center">
+            <h1>Welcome Student in our P.E Department Website</h1>
+            <br>
+            <p>This website is to provide a service where you can now buy a uniform, reserve, 
+                and borrow  equipment from the department <br> — the choice is yours.</p>
+            <p>Don't have an account yet? Register now!</p>
+            <button class="button-custom">Register</button>
         </div>
     </div>
 
-    <br id="service">
-    <br>
-    <br>
-
-    <div class="container service-container">
-        <h3 class="text-center service-title">Services</h3>
-        <hr>
-        <div class="row">
-            <div class="col-sm-4 text-center">
-                <br>
-                <div class="card">
+    <div id="services" class="jumbotron">
+        <div class="container service-container">
+            <div class="text-center">
+                <h3>Our Services Offered</h3>
+                <p class="lead">Experience our quality service to meet your needs.</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 text-center">
                     <i class="fas fa-shopping-cart fa-5x"></i>
                     <br><br>
                     <h3>Buy Uniform</h3>
@@ -30,24 +29,18 @@
                     <p>Here you can Buy P.E uniform simply input all of the necessary information needed
                         and you are good to go to buy your own P.E uniform!</p>
                     <br>
-                    <a class="btn btn-success" href="buy.html">Buy Uniform</a>
+                    <a href="buy.html" class="service-btn">Buy Uniform</a>
                 </div>
-            </div>
-            <div class="col-sm-4 text-center">
-                <br>
-                <div class="card">
+                <div class="col-sm-4 text-center">
                     <i class="far fa-calendar-plus fa-5x"></i>
                     <br><br>
                     <h3>Make Reservation</h3>
                     <br>
                     <p>Make your own reservation, make your time productive and just simply schedule your own choice!</p>
                     <br>
-                    <a class="btn btn-success" href="reserve.html">Make Reservation</a>
+                    <a href="reserve.html" class="service-btn">Make Reservation</a>
                 </div>
-            </div>
-            <div class="col-sm-4 text-center">
-                <br>
-                <div class="card">
+                <div class="col-sm-4 text-center">
                     <i class="fas fa-user-edit fa-5x"></i>
                     <br><br>
                     <h3>Borrow Equipments</h3>
@@ -55,52 +48,69 @@
                     <p>Borrow any equipments in P.E Department, just simply fill-up all the 
                         information that is needed and you can now have a good time!</p>
                     <br>
-                    <a class="btn btn-success" href="borrow.html">Borrow Equipments</a>
+                    <a href="borrow.html" class="service-btn">Borrow Equipments</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <br id="about">
-    <br>
-    <br>
-
-    <div class="jumbotron bg-custom">
-        <div class="container">
-            <h3 class="text-center">About</h3>
-            <hr>
-            <br>
-            <p class="lead">This Website is developed for our P.E department here in Technological University of the Philippines 
-                Cavite Campus in order to accept orders and lend materials for our students.</p>
+    <div id="about" class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="{% static 'media/tupc.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="col-sm-8 align-self-center text-center">
+                <br>
+                <h3>About</h3>
+                <hr>
+                <br>
+                <p class="lead">This Website is developed for our P.E department here in Technological University of the Philippines
+                    Cavite Campus in order to accept orders and lend materials for our students.</p>
+            </div>
         </div>
     </div>
 
-    <br id="contact">
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h3>Map Visualization for the Tup Cavite Campus</h3>
+            <hr>
+            <br>
+            <a class="map-link" href="https://www.google.com/maps/dir/14.3770265,120.9775988/technological+university+of+the+philippines+cavite/@14.36095,120.9549751,14z/data=!3m1!4b1!4m9!4
+            m8!1m1!4e1!1m5!1m1!1s0x3397d43fdf3bf3d3:0x756d61b3739581bc!2m2!1d120.9661019!2d14.3450539" target="_blank">
+                <div class="card">
+                    <img src="{% static 'media/tupc-map.PNG' %}" alt="">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <br>
     <br>
     <br>
 
-    <div class="container contact-container slideanim">
+    <div id="contact" class="container slideanim">
         <h3 class="text-center slideanim">Contact</h3>
         <hr>
         <br>
-        <div class="row">
+        <div class="row contact-form">
             <div class="col-sm-4">
-                <p>Contact us and we'll get back to you within 24 hours.</p>
                 <br>
                 <div class="content">
-                    <i class="fas fa-map-marker-alt logo-bg fa-lg"></i>
-                    <p>Dasmarinas, Philippines</p>
+                    <i class="fas fa-map-marker-alt logo-bg fa-2x"></i>
+                    <p>Dasma, Philippines</p>
                 </div>
                 <div class="content">
-                    <i class="fas fa-phone-alt logo-bg fa-lg"></i>
-                    <p> 09111155555</p>
+                    <i class="fas fa-phone-alt logo-bg fa-2x"></i>
+                    <p>(046) 416 4920</p>
                 </div>
                 <div class="content">
-                    <i class="fas fa-envelope logo-bg fa-lg"></i>
-                    <p>tupcservices@gmail.com</p>
+                    <i class="fas fa-envelope logo-bg fa-2x"></i>
+                    <p> tupcservices@gmail.com</p>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-8 ">
                 <form method="#">
                     <br>
                     <br>
@@ -124,7 +134,7 @@
                                 <br>
                             </div>
                             <div class="form-group mx-auto ">
-                                <button class="btn btn-success">Send Message</button>
+                                <button class="button-custom">Send Message</button>
                             </div>
                         </div>
                     </div>
