@@ -29,7 +29,7 @@ hr{
 }
 
 #link:hover{
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 
@@ -107,4 +107,42 @@ footer {
 .footer-part p {
     font-size: 15px;
     color: white; 
+}
+
+
+/******************************************/
+/*FORM*/
+.custom-container{
+    padding: 50px;  
+    border-radius: 20px;
+    box-shadow: 4px 4px rgb(114, 47, 47);
+}
+
+
+
+/******************************************/
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 530px) {
+    .main-container h1{
+        font-size: 45px;
+        padding-top: 90px;
+    }
+}
+@media only screen and (max-width: 460px) {
+    .main-container h1{
+        font-size: 40px;
+        padding-top: 80px;
+    }
+    .main-container p{
+        font-size: 16px;
+    }
+    .content p{
+        font-size: 20px;
+    }
+    .content i{
+        font-size: 18px;
+    }
+    .responsive-custom-btn{
+        width: 200px;
+    }
 }
