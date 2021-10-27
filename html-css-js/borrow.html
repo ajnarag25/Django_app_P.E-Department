@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy Uniform</title>
+    <link href="assets/tup-logo.png" rel="icon">
+    <title>Borrow Equipment</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -42,13 +43,121 @@
         </div>
     </nav>
 
-
-    <br>
-    <br>
     
-    <div class="container">
-        <h3 class="text-center">BORROW</h3>
-    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="card custom-container">
+                <div class="text-center">
+                    <h2 class="">Borrow Equipments</h2>
+                    <hr>
+                    <p>Please fill-up the necessary information needed, we will validate the items that you borrow.</p>
+                </div>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id">I.D Number</label>
+                            <input type="text" class="form-control" id="idnum" placeholder="Enter I.D Number" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" class="form-control" id="fullname" placeholder="Enter Fullname" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="contact">Contact Number</label>
+                            <input type="text" class="form-control" id="contact" placeholder="Enter Contact Number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="course">Course</label>
+                            <select id="course" class="form-control" >
+                                <option>BET-COET</option>
+                                <option>BET-MT</option>
+                                <option>BET-AT</option>
+                                <option>BS-IE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="strand">Strand</label>
+                            <select id="strand" class="form-control" >
+                                <option>STEM</option>
+                                <option>NON-STEM</option>
+                                <option>NO-STRAND</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br>
+                    <h3 class="text-center">Equipment Details</h3>
+                    <hr>
+                    <br>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="items">Select an item</label>
+                            <select id="items" class="form-control" >
+                                <option>BASKETBALL</option>
+                                <option>VOLLYBALL</option>
+                                <option>CHESS BOARD</option>
+                                <option>PING PONG BALLS</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" class="form-control" value="1" min="0" max="20" name="quants">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="itemfind">*If the item is not in the list please type in here*</label>
+                            <input type="text" class="form-control" id="itemfind" placeholder="Enter Item">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="d-borrow">Date of Borrow</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="d-return">Date of Return</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group text-center">
+                        <label><b>* Reminder please check all item you will borrow before claiming. All items return with defect will be reimburse *</label>
+                        <br>
+                        <input type= "checkbox" id="checkbox1" required>
+	                    <label for = "checkbox1"> I Agree in terms and condition</label>
+                    </div>
+                    <br>
+                
+                    <div class="text-center">
+                        <button type="submit" class="button-custom responsive-custom-btn">Submit Form</button>
+                        <hr>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    
+
+    <footer class="bg-dark footer-part">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <p class="lead">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by P.E Department
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
