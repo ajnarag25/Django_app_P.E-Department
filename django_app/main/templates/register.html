@@ -3,53 +3,69 @@
 
 {% block content %}
 
-<div class="container" style="width: 400px;">
-    <h3 class="text-center my-3">Register</h3>
-    <form action="" method="#">
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" name="newFname" id="newFname">
-                <label for="newFname" class="form-label">First name</label>
+
+<div class="jumbotron">
+    <div class="container" >
+        <div class="card custom-container">
+            <div class="text-center">
+                <h2>Register</h2>
+                <hr>
+                <p>Please fill-up the necessary informations needed in order to validate your own account.</p>
             </div>
-            <div class="col">
-                <input type="text" class="form-control" name="newLname" id="newLname">
-                <label for="newLname" class="form-label">Last name</label>
-            </div>
+            <form action="" method="#">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="newFname" class="form-label">First name</label>
+                        <input type="text" class="form-control" name="newFname" id="newFname" placeholder="Enter First Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="newLname" class="form-label">Last name</label>
+                        <input type="text" class="form-control" name="newLname" id="newLname" placeholder="Enter Last Name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="newUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="newUsername" id="newUsername" placeholder="Enter Username" autofocus required>
+                </div>
+                <div class="form-row">
+                    <label for="newPassword" class="form-label">Password</label>  
+                    <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Enter Password" required>  
+                </div>
+                <div class="form-row">
+                    <label for="retypePassword" class="form-label">Retype password</label>   
+                    <input type="password" class="form-control" name="retypePassword" id="retypePassword" placeholder="Retype Password" required> 
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="">Gender:</label> <br>
+                        <input type="radio" name="gender" id="M" value="M" required>
+                        <label for="M" class="form-label">Male</label>
+                        <input type="radio" name="gender" id="F" value="F">
+                        <label for="F" class="form-label">Female</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="newemail" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="newemail" id="newemail" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="newCourse" class="form-label">Course</label>
+                        <select name="newCourse" class="form-control" id="newCourse">
+                            <option class="" value="Item 1">BET-COET</option>
+                            <option class="" value="Item 2">BET-MT</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="button-custom responsive-custom-btn">Register</button>
+                    <hr>
+                    <p>Registered already? <a href="login.html">Click Here to Login</a></p>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <input type="text" class="form-control" name="newUsername" id="newUsername" autofocus required>
-            <label for="newUsername" class="form-label">Username</label>
-        </div>
-        <div class="row">
-            <input type="password" class="form-control" name="newPassword" id="newPassword" required>
-            <label for="newPassword" class="form-label">Password</label>    
-        </div>
-        <div class="row">
-            <input type="password" class="form-control" name="retypePassword" id="retypePassword" required>
-            <label for="retypePassword" class="form-label">Retype password</label>    
-        </div>
-        <div class="row">
-            <input type="radio" name="gender" id="M" value="M" required>
-            <label for="M" class="form-label">Male</label>
-            <input type="radio" name="gender" id="F" value="F">
-            <label for="F" class="form-label">Female</label>
-        </div>
-        <div class="row">
-            <input type="email" class="form-control" name="newemail" id="newemail">
-            <label for="newemail" class="form-label">email</label>
-        </div>
-        <div class="row">
-            <select name="newCourse" class="form-select" id="newCourse">
-                <option class="" value="Item 1">Item 1</option>
-                <option class="" value="Item 2">Item 2</option>
-            </select>
-            <label for="newCourse" class="form-label">Course</label>
-        </div>
-        <div>
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </div>
-        <a class="btn" href="login.html">Registered already?</a>
-    </form>
+    </div>
 </div>
+
 
 {% endblock %}
