@@ -12,47 +12,48 @@
                 <hr>
                 <p>Please fill-up the necessary informations needed in order to validate your own account.</p>
             </div>
-            <form action="" method="#">
+            <form action="" method="POST">
+                {% csrf_token %}
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="newFname" class="form-label">First name</label>
-                        <input type="text" class="form-control" name="newFname" id="newFname" placeholder="Enter First Name">
+                        <input type="text" class="form-control" name="firstname" placeholder="Enter First Name">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newLname" class="form-label">Last name</label>
-                        <input type="text" class="form-control" name="newLname" id="newLname" placeholder="Enter Last Name">
+                        <input type="text" class="form-control" name="lastname" placeholder="Enter Last Name">
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="newUsername" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="newUsername" id="newUsername" placeholder="Enter Username" autofocus required>
+                    <input type="text" class="form-control" name="username" placeholder="Enter Username" autofocus required>
                 </div>
                 <div class="form-row">
                     <label for="newPassword" class="form-label">Password</label>  
-                    <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Enter Password" required>  
+                    <input type="password" class="form-control" name="password" placeholder="Enter Password" required>  
                 </div>
                 <div class="form-row">
                     <label for="retypePassword" class="form-label">Retype password</label>   
-                    <input type="password" class="form-control" name="retypePassword" id="retypePassword" placeholder="Retype Password" required> 
+                    <input type="password" class="form-control" name="retypepassword" placeholder="Retype Password" required> 
                 </div>
                 <br>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="">Gender:</label> <br>
-                        <input type="radio" name="gender" id="M" value="M" required>
+                        <input type="radio" name="gender" required>
                         <label for="M" class="form-label">Male</label>
-                        <input type="radio" name="gender" id="F" value="F">
+                        <input type="radio" name="gender">
                         <label for="F" class="form-label">Female</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newemail" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="newemail" id="newemail" placeholder="Enter Email">
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="newCourse" class="form-label">Course</label>
-                        <select name="newCourse" class="form-control" id="newCourse">
-                            <option class="" value="Item 1">BET-COET</option>
-                            <option class="" value="Item 2">BET-MT</option>
+                        <select name="newCourse" class="form-control">
+                            <option class="" name="course">BET-COET</option>
+                            <option class="" name="course">BET-MT</option>
                         </select>
                     </div>
                 </div>
