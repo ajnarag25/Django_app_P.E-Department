@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Registration
+from .forms import RegistrationForm
 
 # Create your views here.
 def index(request):
@@ -19,13 +19,12 @@ def login(request):
     return render(request, "login.html")
 
 def register(request):
-    firstname = request.POST.get('firstname', "default value")
-    lastname = request.POST.get('lastname', "default value")
-    username = request.POST.get('username', "default value")
-    password = request.POST.get('password', "default value")
-    email = request.POST.get('email', "default value")
-    
-    saverecord = Registration(firstname=firstname, lastname=lastname, username=username, password=password, email=email)
-    saverecord.save()
-    
-    return render(request, "register.html")
+    form = RegistrationForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, "register.html", context)

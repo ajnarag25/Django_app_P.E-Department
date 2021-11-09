@@ -40,10 +40,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="">Gender:</label> <br>
-                        <input type="radio" name="gender" required>
-                        <label for="M" class="form-label">Male</label>
-                        <input type="radio" name="gender">
-                        <label for="F" class="form-label">Female</label>
+                        <select name="gender" class="form-control">
+                            <option selected disabled="true">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newemail" class="form-label">Email</label>
@@ -51,9 +52,10 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="newCourse" class="form-label">Course</label>
-                        <select name="newCourse" class="form-control">
-                            <option class="" name="course">BET-COET</option>
-                            <option class="" name="course">BET-MT</option>
+                        <select name="course" class="form-control">
+                            <option selected disabled="true">Select Course</option>
+                            <option>BET-COET</option>
+                            <option>BET-MT</option>
                         </select>
                     </div>
                 </div>
