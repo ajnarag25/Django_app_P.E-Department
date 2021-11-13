@@ -12,31 +12,32 @@
                     <hr>
                     <p>Please fill-up the necessary information needed, in order to validate your order.</p>
                 </div>
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="id">I.D Number</label>
-                            <input type="text" class="form-control" name="idnumbuy" placeholder="Enter I.D Number" required>
+                            <input type="text" class="form-control" name="idnum" placeholder="Enter I.D Number" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="fullname">Full Name</label>
-                            <input type="text" class="form-control" name="fullnamebuy" placeholder="Enter Fullname" required>
+                            <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="emailbuy" placeholder="Enter Email" required>
+                            <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="contact">Contact Number</label>
-                            <input type="text" class="form-control" name="contactbuy" placeholder="Enter Contact Number" required>
+                            <input type="text" class="form-control" name="contact" placeholder="Enter Contact Number" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="contact">Gender</label>
-                            <select name="genderbuy" class="form-control">
+                            <select name="gender" class="form-control">
                                 <option selected disabled="true">Select Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -44,7 +45,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="course">Course</label>
-                            <select name="coursebuy" class="form-control" >
+                            <select name="course" class="form-control" >
                                 <option selected disabled="true">Select Course</option>
                                 <option>BET-COET</option>
                                 <option>BET-MT</option>
@@ -54,7 +55,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="strand">Strand</label>
-                            <select name="strandbuy" class="form-control" >
+                            <select name="strand" class="form-control" >
                                 <option selected disabled="true">Select Strand</option>
                                 <option>STEM</option>
                                 <option>NON-STEM</option>
@@ -73,25 +74,26 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="shirt">Shirts</label>
-                            <input type="number" name="b1" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <input type="number" name="shirt" class="form-control" value="1" min="0" max="5" name="shirt">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="shirt">Shorts</label>
-                            <input type="number" name="b2" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <input type="number" name="short" class="form-control" value="1" min="0" max="5" name="shirt">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="shirt">Slacks</label>
-                            <input type="number" name="b3" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <input type="number" name="slacks" class="form-control" value="1" min="0" max="5" name="shirt">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="shirt">Joggingpants</label>
-                            <input type="number" name="b4" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <input type="number" name="joggingpant" class="form-control" value="1" min="0" max="5" name="shirt">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="course">Size</label>
-                        <select name="sizebuy" class="form-control" >
+                        <select name="size" class="form-control" >
+                            <option selected disabled="true">Select Size</option>
                             <option>Small</option>
                             <option>Medium</option>
                             <option>Large</option>
