@@ -7,3 +7,4 @@ Web Application for P.E Department. Back-end function using django.
 2. CLONE THIS REPOSITORY https://github.com/ajnarag25/Django_app_P.E-Department.git
 3. OPEN TERMINAL
 4. TYPE: python manage.py runserver
+5. CLICK THE LINK PROVIDED
