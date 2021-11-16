@@ -47,9 +47,8 @@ class Borrow(models.Model):
     strand = models.CharField(max_length=100)
     items = models.CharField(max_length=100)
     quantity = models.CharField(max_length=100)
-    itemfind = models.CharField(max_length=100)
-    #dateofborrow = models.CharField(max_length=100)
-    #dateofreturn = models.CharField(max_length=100)
+    dateofborrow = models.CharField(max_length=100)
+    dateofreturn = models.CharField(max_length=100)
 
 
 

@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Admin -- {% endblock %}
+
+{% block content %}
+<br>
+<br>
+
+<div class="container">
+    <a href="login.html" class="button-custom responsive-custom-btn">Logout</a>
+    <h3 class="text-center">Admin</h3>
+
+    <br>
+    <p class="text-center">Data of Registered Students</p>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Username</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for db in data %}
+          <tr>
+            <td>{{ db.firstname }}</td>
+            <td>{{ db.lastname }}</td>
+            <td>{{ db.username }}</td>
+            <td>{{ db.gender }}</td>
+            <td>{{ db.email }}</td>
+            <td>{{ db.course }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="btn btn-success">Add</button>
+      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-danger">Delete</button>
+
+    <br>
+    <br>
+
+    <p class="text-center">Data of Students who Buy Uniform</p>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>I.D Number</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>Strand</th>
+            <th>Shirt</th>
+            <th>Short</th>
+            <th>Slacks</th>
+            <th>Joggingpants</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for buy in buy_data %}
+          <tr>
+            <td>{{ buy.idnum }}</td>
+            <td>{{ buy.fullname }}</td>
+            <td>{{ buy.email }}</td>
+            <td>{{ buy.contact }}</td>
+            <td>{{ buy.gender }}</td>
+            <td>{{ buy.course }}</td>
+            <td>{{ buy.strand }}</td>
+            <td>{{ buy.shirt }}</td>
+            <td>{{ buy.short }}</td>
+            <td>{{ buy.slacks }}</td>
+            <td>{{ buy.joggingpant }}</td>
+            <td>{{ buy.size }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="btn btn-success">Add</button>
+      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-danger">Delete</button>
+
+    <br>
+    <br>
+
+    <p class="text-center">Data of Students who Reserve Uniform</p>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>I.D Number</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>Strand</th>
+            <th>Shirt</th>
+            <th>Short</th>
+            <th>Slacks</th>
+            <th>Joggingpants</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reserve in reserve_data %}
+          <tr>
+            <td>{{ reserve.idnum }}</td>
+            <td>{{ reserve.fullname }}</td>
+            <td>{{ reserve.email }}</td>
+            <td>{{ reserve.contact }}</td>
+            <td>{{ reserve.gender }}</td>
+            <td>{{ reserve.course }}</td>
+            <td>{{ reserve.strand }}</td>
+            <td>{{ reserve.shirt }}</td>
+            <td>{{ reserve.short }}</td>
+            <td>{{ reserve.slacks }}</td>
+            <td>{{ reserve.joggingpant }}</td>
+            <td>{{ reserve.size }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="btn btn-success">Add</button>
+      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-danger">Delete</button>
+
+
+    <br>
+    <br>
+
+    <p class="text-center">Data of Students who Borrow Equipments</p>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>I.D Number</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Course</th>
+            <th>Strand</th>
+            <th>Items</th>
+            <th>Quantity</th>
+            <th>Date of Borrow</th>
+            <th>Date of Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for borrow in borrow_data %}
+          <tr>
+            <td>{{ borrow.idnum }}</td>
+            <td>{{ borrow.fullname }}</td>
+            <td>{{ borrow.email }}</td>
+            <td>{{ borrow.contact }}</td>
+            <td>{{ borrow.course }}</td>
+            <td>{{ borrow.strand }}</td>
+            <td>{{ borrow.items }}</td>
+            <td>{{ borrow.quantity }}</td>
+            <td>{{ borrow.dateofborrow }}</td>
+            <td>{{ borrow.dateofreturn }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="btn btn-success">Add</button>
+      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-danger">Delete</button>
+
+</div>
+
+<br>
+<br>
+
+
+{% endblock %}
