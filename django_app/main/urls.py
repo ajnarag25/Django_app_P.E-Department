@@ -10,6 +10,10 @@ urlpatterns = [
 
     path('login.html', views.login, name="login"),
     path('register.html', views.register, name="register"),
+<<<<<<< HEAD
     path('admin.html', views.admin, name="admin"),
     
+=======
+    path('student/<int:pk_id>/', views.student, name='student')
+>>>>>>> 665a25cc38bfd4e310d4259c2664e806562cdbb0
 ]
