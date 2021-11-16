@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import RegistrationForm, BuyForm, ReserveForm, BorrowForm
+from .models import Registration
 
 # Create your views here.
 def index(request):
@@ -49,3 +50,25 @@ def register(request):
     }
 
     return render(request, "register.html", context)
+
+def student(request, pk_id):
+    student_info = Registration.objects.get(id=pk_id)
+
+    context = {"student": student_info}
+    
+    # contents of context dict can be accessed by the template receiving it
+    # had to browse django docs to understand since it wasn't obvious
+    #
+    # anyway, inside functions/methods, the steps are more or less
+    # 1. query the database or something
+    # 2. place result(s) inside a dict
+    # 3. pass the dict to the template
+    #
+    # inside the template, access the dict contents using syntax
+    # {{ dictkey }}
+    # attribute access works similar
+    # {{ dictkey.attr }}
+    #
+    # feel free to remove this comment if you understand already
+
+    return render(request, 'student.html', context)

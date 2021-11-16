@@ -10,5 +10,5 @@ urlpatterns = [
 
     path('login.html', views.login, name="login"),
     path('register.html', views.register, name="register"),
-    
+    path('student/<int:pk_id>/', views.student, name='student')
 ]
