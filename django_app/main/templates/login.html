@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load static %}
 
 {% block content %}
@@ -10,14 +10,15 @@
                     <h2 class="">Login</h2>
                     <hr>
                 </div>
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
                     <div class="form-group col-md">
                         <label for="loginUsername">Username</label>
-                        <input type="text" class="form-control" name="loginUsername" id="loginUsername" placeholder="Enter Username" autofocus required>
+                        <input type="text" class="form-control" name="username" id="loginUsername" placeholder="Enter Username" autofocus required>
                     </div>
                     <div class="form-group col-md">
                         <label for="loginPassword">Password</label>
-                        <input type="password" class="form-control" name="loginPassword" id="loginPassword" placeholder="Enter Password" required>
+                        <input type="password" class="form-control" name="password" id="loginPassword" placeholder="Enter Password" required>
                         <br>
                         <input type="checkbox" name="remember" id="remember">
                         <label for="remember">Remember Me</label>

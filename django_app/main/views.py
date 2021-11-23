@@ -1,13 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Registration, Buy, Reserve, Borrow
 from .forms import RegistrationForm, BuyForm, ReserveForm, BorrowForm
 from .models import Registration
+#from django.contrib.auth import authenticate, login
+#from django.contrib import messages
 
 # Create your views here.
 
 def login(request):
-    return render(request, "login.html")
+    return render(request, 'login.html')
+      
     
 
 def index(request):
@@ -69,6 +72,7 @@ def register(request):
     form = RegistrationForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('login')
 
     context = {
         'form': form
