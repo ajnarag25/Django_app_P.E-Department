@@ -5,9 +5,13 @@ from .forms import RegistrationForm, BuyForm, ReserveForm, BorrowForm
 from .models import Registration
 
 # Create your views here.
+
+def login(request):
+    return render(request, "login.html")
+    
+
 def index(request):
     return render(request, "index.html")
-
 
 
 def buy(request):
@@ -43,12 +47,6 @@ def borrow(request):
         'formborrow': formborrow
     }
     return render(request, "borrow.html", context)
-
-
-
-def login(request):
-    return render(request, "login.html")
-
 
 
 def admin(request):

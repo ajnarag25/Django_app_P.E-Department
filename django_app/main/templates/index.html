@@ -11,7 +11,7 @@
                 and borrow  equipment from the department <br> — the choice is yours.</p>
             <p>Don't have an account yet? Register now!</p>
             <form action="register.html">
-                <button class="button-custom" href="register.html">Register</button>
+                <button class="button-custom" href="{% url 'register' %}">Register</button>
             </form>
         </div>
     </div>
@@ -33,7 +33,7 @@
                     <p>Here you can Buy P.E uniform simply input all of the necessary information needed
                         and you are good to go to buy your own P.E uniform!</p>
                     <br>
-                    <a href="buy.html" class="service-btn">Buy Uniform</a>
+                    <a href="{% url 'buy' %}" class="service-btn">Buy Uniform</a>
                 </div>
                 <div class="col-sm-4 text-center">
                     <i class="far fa-calendar-plus fa-5x"></i>
@@ -42,7 +42,7 @@
                     <br>
                     <p>Make your own reservation, make your time productive and just simply schedule your own choice!</p>
                     <br>
-                    <a href="reserve.html" class="service-btn">Make Reservation</a>
+                    <a href="{% url 'reserve' %}" class="service-btn">Make Reservation</a>
                 </div>
                 <div class="col-sm-4 text-center">
                     <i class="fas fa-user-edit fa-5x"></i>
@@ -52,7 +52,7 @@
                     <p>Borrow any equipments in P.E Department, just simply fill-up all the 
                         information that is needed and you can now have a good time!</p>
                     <br>
-                    <a href="borrow.html" class="service-btn">Borrow Equipments</a>
+                    <a href="{% url 'borrow' %}" class="service-btn">Borrow Equipments</a>
                 </div>
             </div>
         </div>

@@ -3,7 +3,6 @@
 
 {% block content %}
 
-
 <div class="jumbotron">
     <div class="container" >
         <div class="card custom-container">
@@ -63,7 +62,7 @@
                 <div class="text-center">
                     <button type="submit" class="button-custom responsive-custom-btn">Register</button>
                     <hr>
-                    <p>Registered already? <a href="login.html">Click Here to Login</a></p>
+                    <p>Registered already? <a href="{% url 'login' %}">Click Here to Login</a></p>
                 </div>
             </form>
         </div>
