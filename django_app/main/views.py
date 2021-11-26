@@ -1,22 +1,60 @@
-from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
+#from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
 from .models import Registration, Buy, Reserve, Borrow
 from .forms import RegistrationForm, BuyForm, ReserveForm, BorrowForm
-from .models import Registration
-#from django.contrib.auth import authenticate, login
-#from django.contrib import messages
 
 # Create your views here.
-
-def login(request):
-    return render(request, 'login.html')
-      
-    
 
 def index(request):
     return render(request, "index.html")
 
 
+def register_page(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    context = {'invalid': False}
+
+    form = RegistrationForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('login_page')
+    else:
+        context['form'] = form
+        context['invalid'] = True
+
+    return render(request, "register.html", context)
+
+
+def login_page(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    context = {'invalid': False}
+    
+    if request.POST is not None and len(request.POST):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+
+        context['invalid'] = True
+
+    return render(request, 'login.html', context)
+
+
+def request_logout(request):
+    logout(request)
+    return redirect('login')
+
+
+@login_required(login_url='login_page')
 def buy(request):
     formbuy = BuyForm(request.POST or None)
     if formbuy.is_valid():
@@ -28,7 +66,7 @@ def buy(request):
     return render(request, "buy.html", context)
 
 
-
+@login_required(login_url='login_page')
 def reserve(request):
     formreserve = ReserveForm(request.POST or None)
     if formreserve.is_valid():
@@ -40,7 +78,7 @@ def reserve(request):
     return render(request, "reserve.html", context)
 
 
-
+@login_required(login_url='login_page')
 def borrow(request):
     formborrow = BorrowForm(request.POST or None)
     if formborrow.is_valid():
@@ -50,6 +88,14 @@ def borrow(request):
         'formborrow': formborrow
     }
     return render(request, "borrow.html", context)
+
+
+def student(request, pk_id):
+    student_info = Registration.objects.get(id=pk_id)
+
+    context = {"student": student_info}
+    
+    return render(request, 'student.html', context)
 
 
 def admin(request):
@@ -65,38 +111,3 @@ def admin(request):
         'borrow_data': borrow_db
     }
     return render(request, "admin.html", getdata)
-    
-
-
-def register(request):
-    form = RegistrationForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('login')
-
-    context = {
-        'form': form
-    }
-    return render(request, "register.html", context)
-
-def student(request, pk_id):
-    student_info = Registration.objects.get(id=pk_id)
-
-    context = {"student": student_info}
-    
-    # contents of context dict can be accessed by the template receiving it
-    # had to browse django docs to understand since it wasn't obvious
-    #
-    # anyway, inside functions/methods, the steps are more or less
-    # 1. query the database or something
-    # 2. place result(s) inside a dict
-    # 3. pass the dict to the template
-    #
-    # inside the template, access the dict contents using syntax
-    # {{ dictkey }}
-    # attribute access works similar
-    # {{ dictkey.attr }}
-    #
-    # feel free to remove this comment if you understand already
-
-    return render(request, 'student.html', context)
