@@ -9,8 +9,6 @@ class Registration(models.Model):
     gender = models.CharField(max_length=100)
     email = models.EmailField(max_length=200)
     course = models.CharField(max_length=100)
-    def __str__(self):
-        return self.firstname
 
 class Buy(models.Model):
     idnum = models.CharField(max_length=100)

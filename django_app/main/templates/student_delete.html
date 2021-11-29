@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+
+{% block title %}Student -- {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="card custom-container">
+            <div class="text-center">
+                <h2 class="">Delete Student Info</h2>
+                <hr>
+            </div>
+            <form method="POST">
+                {% csrf_token %}    
+                <h2>Are you sure to delete this student {{ student_info.firstname }}</h2>
+                    <button class="btn btn-danger">Yes</button>
+                    <a href="{% url 'administrator' %}" class="btn btn-primary">No</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

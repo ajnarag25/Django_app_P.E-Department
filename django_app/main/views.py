@@ -2,11 +2,26 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Registration, Buy, Reserve, Borrow
 from .forms import RegistrationForm, BuyForm, ReserveForm, BorrowForm
-from .models import Registration
 #from django.contrib.auth import authenticate, login
 #from django.contrib import messages
 
 # Create your views here.
+
+
+def administrator(request):
+    #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES  
+    registration_db = Registration.objects.all()
+    buy_db = Buy.objects.all()
+    reserve_db = Reserve.objects.all()
+    borrow_db = Borrow.objects.all()
+    getdata ={
+        'data': registration_db,
+        'buy_data': buy_db,
+        'reserve_data': reserve_db,
+        'borrow_data': borrow_db
+    }
+    return render(request, "administrator.html", getdata)
+
 
 def login(request):
     return render(request, 'login.html')
@@ -52,21 +67,6 @@ def borrow(request):
     return render(request, "borrow.html", context)
 
 
-def admin(request):
-    #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES
-    registration_db = Registration.objects.all
-    buy_db = Buy.objects.all
-    reserve_db = Reserve.objects.all
-    borrow_db = Borrow.objects.all
-    getdata ={
-        'data': registration_db,
-        'buy_data': buy_db,
-        'reserve_data': reserve_db,
-        'borrow_data': borrow_db
-    }
-    return render(request, "admin.html", getdata)
-    
-
 
 def register(request):
     form = RegistrationForm(request.POST or None)
@@ -79,24 +79,26 @@ def register(request):
     }
     return render(request, "register.html", context)
 
-def student(request, pk_id):
-    student_info = Registration.objects.get(id=pk_id)
-
-    context = {"student": student_info}
+def student(request, student_id):
+    student_info = Registration.objects.get(id=student_id)
+    form = RegistrationForm(request.POST or None, instance=student_info)
+    context = {
+        "form": form,
+        "student": student_info
+        }
     
-    # contents of context dict can be accessed by the template receiving it
-    # had to browse django docs to understand since it wasn't obvious
-    #
-    # anyway, inside functions/methods, the steps are more or less
-    # 1. query the database or something
-    # 2. place result(s) inside a dict
-    # 3. pass the dict to the template
-    #
-    # inside the template, access the dict contents using syntax
-    # {{ dictkey }}
-    # attribute access works similar
-    # {{ dictkey.attr }}
-    #
-    # feel free to remove this comment if you understand already
+    if form.is_valid():
+        form.save()
+        return redirect('administrator')
 
     return render(request, 'student.html', context)
+
+
+def delete_student(request, student_id):
+    student_info = Registration.objects.get(id=student_id)
+
+    if request.method == "POST":
+        student_info.delete()
+        return redirect('administrator')
+
+    return render(request, 'student_delete.html', {'student_info': student_info})

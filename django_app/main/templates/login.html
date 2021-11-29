@@ -10,7 +10,7 @@
                     <h2 class="">Login</h2>
                     <hr>
                 </div>
-                <form method="POST">
+                <form method="POST" action="{% url 'index' %}">
                     {% csrf_token %}
                     <div class="form-group col-md">
                         <label for="loginUsername">Username</label>
