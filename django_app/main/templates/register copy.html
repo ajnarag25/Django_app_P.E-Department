@@ -1,0 +1,30 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block title %}Register -- {% endblock title %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="card custom-container">
+            <div class="text-center">
+                <h2>Register</h2>
+                <hr>
+                <p>Please fill-up the necessary informations needed in order to validate your own account.</p>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form}}
+                <div class="text-center">
+                    <button type="submit" class="button-custom responsive-custom-btn">Register</button>
+                    <hr>
+                    <p>Registered already? <a href="{% url 'login_page' %}">Click Here to Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

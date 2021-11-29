@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-#from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+#from django.contrib import messages
 
 from .models import Registration, Buy, Reserve, Borrow
 from .forms import RegistrationForm, BuyForm, ReserveForm, BorrowForm
@@ -17,28 +18,49 @@ def register_page(request):
     if request.user.is_authenticated:
         return redirect('index')
 
-    context = {'invalid': False}
+    context = {}
 
     form = RegistrationForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('login_page')
-    else:
-        context['form'] = form
-        context['invalid'] = True
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('login_page')   # render register-success before redirecting somewhere, maybe?
+        else:
+            context['form'] = form
+            context['invalid'] = True
 
     return render(request, "register.html", context)
+
+
+# temporarily create a separate view until I figure out how to not break the model
+def register_2(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    context = {}
+
+    form = UserCreationForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('login_page')
+        else:
+            context['form'] = form
+            context['invalid'] = True
+
+    return render(request, "register copy.html", context)
 
 
 def login_page(request):
     if request.user.is_authenticated:
         return redirect('index')
 
-    context = {'invalid': False}
-    
-    if request.POST is not None and len(request.POST):
+    context = {}
+
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -51,7 +73,7 @@ def login_page(request):
 
 def request_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('login_page')
 
 
 @login_required(login_url='login_page')
