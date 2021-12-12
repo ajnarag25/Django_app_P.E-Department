@@ -8,19 +8,19 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" id="link" href="#">Home</a>
+                        <a class="nav-link" id="link" href="{% url 'index' %}#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="link" href="#services">Services</a>
+                        <a class="nav-link" id="link" href="{% url 'index' %}#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="link" href="#about">About</a>
+                        <a class="nav-link" id="link" href="{% url 'index' %}#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="link" href="#contact">Contact</a>
+                        <a class="nav-link" id="link" href="{% url 'index' %}#contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="link" href="{% url 'login' %}">Logout</a>
+                        <a class="nav-link" id="link" href="{% url 'logout' %}">Logout</a>
                     </li>
                 </ul>
             </div>

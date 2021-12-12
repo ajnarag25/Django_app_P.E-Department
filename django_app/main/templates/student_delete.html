@@ -10,12 +10,29 @@
             <div class="text-center">
                 <h2 class="">Delete Student Info</h2>
                 <hr>
-            </div>
-            <form method="POST">
-                {% csrf_token %}    
-                <h2>Are you sure to delete this student {{ student_info.firstname }}</h2>
-                    <button class="btn btn-danger">Yes</button>
-                    <a href="{% url 'administrator' %}" class="btn btn-primary">No</button>
+            </div>   
+                <div class="text-center">
+                    <h2>Are you sure to delete this student {{ student_info.firstname }} {{ student_info.lastname }} ?</h2>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Yes</button>
+                    <a href="{% url 'administrator' %}" class="btn btn-primary">No</a>
+                </div>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Permanently Delete the data?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %} 
+                        <div class="modal-body text-center">
+                          <button type="submit" class="btn btn-danger">Yes I'm Sure</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </form>
             </div>
         </div>
