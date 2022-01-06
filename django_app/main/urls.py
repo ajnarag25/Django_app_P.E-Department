@@ -11,8 +11,6 @@ urlpatterns = [
     path('borrow', views.borrow, name="borrow"),
     path('register', views.register, name="register"),
     path('student/<student_id>/', views.student, name='student'),
-
     path('logout', views.logoutUser, name="logout"),
-
     path('delete_student/<student_id>', views.delete_student, name="delete_student")
 ]

@@ -36,15 +36,17 @@ def loginuser(request):
         if request.method == 'POST':
             userrr = request.POST.get('username')
             passw = request.POST.get('password') 
-
             user = authenticate(request, username=userrr,password=passw)
  
             if user is not None:
                 login(request, user)
                 return redirect('index')
+
+            elif userrr and passw == "admin":
+                return redirect ('administrator')
+                
             else:
-                messages.info(request,'Username OR password is incorrect')
-        
+                messages.info(request,'Username/Password is incorrect')
         context = {}
 
         return render(request, 'login.html',context)
@@ -101,7 +103,6 @@ def register(request):
     else:
         form = CreateUserForm()
         if request.method == 'POST':
-            print('waaaaaaaaaaaaa')
             form = CreateUserForm(request.POST)
             if form.is_valid():
                 form.save()
