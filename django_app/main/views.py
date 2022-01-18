@@ -1,8 +1,8 @@
 from django.contrib import auth
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Registration, Buy, Reserve, Borrow
-from .forms import CreateUserForm, RegistrationForm, BuyForm, ReserveForm, BorrowForm
+from .models import Buy, Reserve, Borrow
+from .forms import CreateUserForm, BuyForm, ReserveForm, BorrowForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -13,20 +13,24 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required(login_url='login')
 def administrator(request):
-    #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES  
-    registration_db = Registration.objects.all()
-    buy_db = Buy.objects.all()
-    reserve_db = Reserve.objects.all()
-    borrow_db = Borrow.objects.all()
-    getdata ={
-        'data': registration_db,
-        'buy_data': buy_db,
-        'reserve_data': reserve_db,
-        'borrow_data': borrow_db
-    }
-    return render(request, "administrator.html", getdata)
+    
+    if request.user.is_authenticated and request.user.is_staff:
+
+        #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES  
+        buy_db = Buy.objects.all()
+        reserve_db = Reserve.objects.all()
+        borrow_db = Borrow.objects.all()
+        getdata ={
+            'buy_data': buy_db,
+            'reserve_data': reserve_db,
+            'borrow_data': borrow_db
+        }
+        return render(request, "administrator.html", getdata)
+
+    else:
+        return redirect('index')
 
 
 def loginuser(request):
@@ -40,18 +44,17 @@ def loginuser(request):
  
             if user is not None:
                 login(request, user)
-                return redirect('index')
 
-            elif userrr and passw == "admin":
-                return redirect ('administrator')
-                
+                if user.is_staff:
+                    return redirect('administrator')
+                else:
+                    return redirect('index')
+            
             else:
                 messages.info(request,'Username/Password is incorrect')
+        
         context = {}
-
         return render(request, 'login.html',context)
-
-
     
     #return render(request, 'login.html')
       
@@ -59,6 +62,7 @@ def loginuser(request):
 @login_required(login_url='login')
 def index(request):
     return render(request, "index.html")
+
 
 @login_required(login_url='login')
 def buy(request):
@@ -96,7 +100,6 @@ def borrow(request):
     return render(request, "borrow.html", context)
 
 
-
 def register(request):  
     if request.user.is_authenticated:
         return redirect ('index')
@@ -114,22 +117,27 @@ def register(request):
         }
         return render(request, "register.html", context)
 
+
 def student(request, student_id):
-    student_info = Registration.objects.get(id=student_id)
-    form = RegistrationForm(request.POST or None, instance=student_info)
-    context = {
-        "form": form,
-        "student": student_info
-        }
+    # student_info = Registration.objects.get(id=student_id)
+    # form = RegistrationForm(request.POST or None, instance=student_info)
+    # context = {
+    #     "form": form,
+    #     "student": student_info
+    #     }
     
-    if form.is_valid():
-        form.save()
-        return redirect('administrator')
+    # if form.is_valid():
+    #     form.save()
+    #     return redirect('administrator')
 
-    return render(request, 'student.html', context)
+    return render(request, 'student.html')
 
 
+@login_required(login_url='login')
 def delete_student(request, student_id):
+    if not request.user.is_superuser:
+        return ...  # TODO prevent access for non-admins
+
     student_info = Registration.objects.get(id=student_id)
 
     if request.method == "POST":
@@ -138,6 +146,7 @@ def delete_student(request, student_id):
 
     return render(request, 'student_delete.html', {'student_info': student_info})
 
+
 def logoutUser(request):
-	logout(request)
-	return redirect('login')
+    logout(request)
+    return redirect('login')

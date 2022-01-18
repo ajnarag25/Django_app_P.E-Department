@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
@@ -20,8 +20,10 @@
                         <label for="loginPassword">Password</label>
                         <input type="password" class="form-control" name="password" id="loginPassword" placeholder="Enter Password" required>
                         <br>
+                        {% comment "no_sesh" %}
                         <input type="checkbox" name="remember" id="remember">
                         <label for="remember">Remember Me</label>
+                        {% endcomment %}
                     </div>
 
                     {% for message in messages %}

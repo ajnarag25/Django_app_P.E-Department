@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
@@ -11,6 +11,11 @@
                 <hr>
                 <p>Please fill-up the necessary informations needed in order to validate your own account.</p>
             </div>
+            {% if form.errors %}    
+            <div class="text-center">
+                <p>Invalid form credentials. Try again.</p>
+            </div>
+            {% endif %}
             <br>
             <form action="" method="POST">
                 {% csrf_token %}
@@ -34,6 +39,14 @@
                         {{form.email}}
                     </div>
           
+                </div>
+                <div>
+                    <p>Password must contain:</p>
+                    <ul>
+                        <li>at least 8 characters</li>
+                        <li>at least 1 uppercase letter</li>
+                        <li>at least 1 digit</li>
+                    </ul>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
