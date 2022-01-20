@@ -62,6 +62,7 @@
             <th>Slacks</th>
             <th>Joggingpants</th>
             <th>Size</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -79,13 +80,15 @@
             <td>{{ buy.slacks }}</td>
             <td>{{ buy.joggingpant }}</td>
             <td>{{ buy.size }}</td>
+            <td> 
+              <a href="{% url 'editbuy' buy.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+              <a href="{% url 'deletebuy' buy.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-      <button class="btn btn-success">Add</button>
-      <button class="btn btn-primary">Update</button>
-      <button class="btn btn-danger">Delete</button>
+
 
     <br>
     <br>
@@ -106,6 +109,7 @@
             <th>Slacks</th>
             <th>Joggingpants</th>
             <th>Size</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -123,13 +127,14 @@
             <td>{{ reserve.slacks }}</td>
             <td>{{ reserve.joggingpant }}</td>
             <td>{{ reserve.size }}</td>
+            <td> 
+              <a href="{% url 'editreserve' reserve.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+              <a href="{% url 'deletereserve' reserve.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-      <button class="btn btn-success">Add</button>
-      <button class="btn btn-primary">Update</button>
-      <button class="btn btn-danger">Delete</button>
 
 
     <br>
@@ -149,6 +154,7 @@
             <th>Quantity</th>
             <th>Date of Borrow</th>
             <th>Date of Return</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -164,16 +170,19 @@
             <td>{{ borrow.quantity }}</td>
             <td>{{ borrow.dateofborrow }}</td>
             <td>{{ borrow.dateofreturn }}</td>
+            <td> 
+              <a href="{% url 'editborrow' borrow.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+              <a href="{% url 'deleteborrow' borrow.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
+            </td>
           </tr>
+          
           {% endfor %}
         </tbody>
       </table>
-      <button class="btn btn-success">Add</button>
-      <button class="btn btn-primary">Update</button>
-      <button class="btn btn-danger">Delete</button>
 
 </div>
 
+<br>
 <br>
 <br>
 
