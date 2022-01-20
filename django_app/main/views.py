@@ -68,8 +68,8 @@ def index(request):
 def buy(request):
     formbuy = BuyForm(request.POST or None)
     if formbuy.is_valid():
+        messages.info(request,'Successfully Submitted!')
         formbuy.save()
-
     context = {
         'formbuy': formbuy
     }
@@ -80,6 +80,7 @@ def buy(request):
 def reserve(request):
     formreserve = ReserveForm(request.POST or None)
     if formreserve.is_valid():
+        messages.info(request,'Successfully Submitted!')
         formreserve.save()
 
     context = {
@@ -92,6 +93,7 @@ def reserve(request):
 def borrow(request):
     formborrow = BorrowForm(request.POST or None)
     if formborrow.is_valid():
+        messages.info(request,'Successfully Submitted!')
         formborrow.save()
 
     context = {
@@ -138,14 +140,83 @@ def delete_student(request, student_id):
     if not request.user.is_superuser:
         return ...  # TODO prevent access for non-admins
 
-    student_info = Registration.objects.get(id=student_id)
+    # student_info = Registration.objects.get(id=student_id)
 
-    if request.method == "POST":
-        student_info.delete()
+    # if request.method == "POST":
+    #     student_info.delete()
+    #     return redirect('administrator')
+
+    return render(request, 'student_delete.html')
+
+def editBuy(request, buy_id):
+    buy_info = Buy.objects.get(id=buy_id)
+    form = BuyForm(request.POST or None, instance=buy_info)
+    context = {
+        "form": form,
+        "buy": buy_info
+        }
+    
+    if form.is_valid():
+        form.save()
         return redirect('administrator')
 
-    return render(request, 'student_delete.html', {'student_info': student_info})
+    return render(request, 'buy_edit.html', context)
 
+def deletebuy(request, buy_id):
+    buy_del = Buy.objects.get(id=buy_id)
+
+    if request.method == "POST":
+        buy_del.delete()
+        return redirect('administrator')
+
+    return render(request, 'buy_delete.html')
+
+def editReserve(request, reserve_id):
+    reserve_info = Reserve.objects.get(id=reserve_id)
+    form = ReserveForm(request.POST or None, instance=reserve_info)
+    context = {
+        "form": form,
+        "reserve": reserve_info
+        }
+    
+    if form.is_valid():
+        form.save()
+        return redirect('administrator')
+
+    return render(request, 'reserve_edit.html', context)
+
+def deletereserve(request, reserve_id):
+    reserve_del = Reserve.objects.get(id=reserve_id)
+
+    if request.method == "POST":
+        reserve_del.delete()
+        return redirect('administrator')
+
+    return render(request, 'reserve_delete.html')
+
+
+def editBorrow(request, borrow_id):
+    borrow_info = Borrow.objects.get(id=borrow_id)
+    form = BorrowForm(request.POST or None, instance=borrow_info)
+    context = {
+        "form": form,
+        "borrow": borrow_info
+        }
+    
+    if form.is_valid():
+        form.save()
+        return redirect('administrator')
+
+    return render(request, 'borrow_edit.html', context)
+
+def deleteborrow(request, borrow_id):
+    borrow_del = Borrow.objects.get(id=borrow_id)
+
+    if request.method == "POST":
+        borrow_del.delete()
+        return redirect('administrator')
+
+    return render(request, 'borrow_delete.html')
 
 def logoutUser(request):
     logout(request)

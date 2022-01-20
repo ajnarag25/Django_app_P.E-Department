@@ -1,0 +1,76 @@
+{% extends "base2.html" %}
+
+{% block title %}Edit Reserve Info  -- {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="card custom-container">
+            <div class="text-center">
+                <h2 class="">Update Reserve Uniform Table</h2>
+                <hr>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">I.D Number</label>
+                    <input type="text" class="form-control" name="idnum" value=" {{ reserve.idnum }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Fullname</label>
+                    <input type="text" class="form-control" name="fullname" value=" {{ reserve.fullname }}" >
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" value=" {{ reserve.email }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Contact</label>
+                    <input type="text" class="form-control" name="contact" value=" {{ reserve.contact }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Gender</label>
+                    <input type="text" class="form-control" name="gender" value=" {{ reserve.gender }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Course</label>
+                    <input type="text" class="form-control" name="course" value=" {{ reserve.course }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Strand</label>
+                    <input type="text" class="form-control" name="strand" value=" {{ reserve.strand }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Shirt</label>
+                    <input type="text" class="form-control" name="shirt" value=" {{ reserve.shirt }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Short</label>
+                    <input type="text" class="form-control" name="short" value=" {{ reserve.short }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Slacks</label>
+                    <input type="text" class="form-control" name="slacks" value=" {{ reserve.slacks }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Joggingpants</label>
+                    <input type="text" class="form-control" name="joggingpant" value=" {{ reserve.joggingpant }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Size</label>
+                    <input type="text" class="form-control" name="size" value=" {{ reserve.size }}">
+                </div>
+                <div class="col-md-12 mt-4 mb-2" style="text-align: center;">
+                <button class="btn btn-primary" type="submit" name="update">Update</button>
+                <a href="{% url 'administrator' %}" class="btn btn-secondary" type="submit" name="back">Back</a>
+                </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

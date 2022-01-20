@@ -1,0 +1,27 @@
+{% extends "base2.html" %}
+
+{% block title %}Delete Student -- {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="card custom-container">
+            <div class="text-center">
+                <h2 class="">Delete Student Info</h2>
+                <hr>
+            </div>   
+                <div class="text-center">
+                    <form method="POST">
+                        {% csrf_token %} 
+                        <h2>Are you sure to delete this student {{ borrow_del.fullname }} ?</h2>
+                        <button type="submit" class="btn btn-danger">Yes I'm Sure</button>
+                        <a href="{% url 'administrator' %}" class="btn btn-primary">No</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

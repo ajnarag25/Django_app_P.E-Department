@@ -7,6 +7,9 @@
     <div class="jumbotron">
         <div class="container">
             <div class="card custom-container">
+                {% for message in messages %}
+                <h3 id="messages" style="color: red;">{{message}}</h3>
+                {% endfor %}
                 <div class="text-center">
                     <h2 class="">Borrow Equipments</h2>
                     <hr>
