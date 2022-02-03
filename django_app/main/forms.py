@@ -1,12 +1,8 @@
 from django import forms
-from .models import Buy, Reserve, Borrow
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-# class RegistrationForm(forms.ModelForm):
-#     class Meta:
-#         model = Registration
-#         fields = '__all__'
 
 class BuyForm(forms.ModelForm):
     class Meta:
@@ -23,6 +19,11 @@ class BorrowForm(forms.ModelForm):
         model = Borrow
         fields = '__all__'
 
+class InventoryForm(forms.ModelForm):
+    class Meta:
+        model = Inventory
+        fields = '__all__'
+        
 class CreateUserForm(UserCreationForm):
 	class Meta:
 		model = User

@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="jumbotron">
-    <div class="container" style="width: 35rem;" >
+    <div class="container" >
         <div class="card custom-container ">
             <div class="text-center">
                 <h2>Register</h2>
@@ -22,21 +22,21 @@
                 <div class="form-row"> 
                     <div class="form-group col-md-6">
                         <label for="newFname" class="form-label">First name: </label>
-                        {{form.first_name}}
+                        <input type="text" class="form-control" name="first_name"  placeholder="Enter Firstname" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newLname" class="form-label">Last name: </label>
-                        {{form.last_name}}
+                        <input type="text" class="form-control" name="last_name"  placeholder="Enter Lastname" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="newUsername" class="form-label">Username:</label>
-                        {{form.username}}
+                        <input type="text" class="form-control" name="username"  placeholder="Enter Username" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newemail" class="form-label">Email: </label>
-                        {{form.email}}
+                        <input type="email" class="form-control" name="email"  placeholder="Enter email" required>
                     </div>
           
                 </div>
@@ -51,11 +51,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="newPassword" class="form-label">Password: </label>  
-                        {{form.password1}}
+                        <input type="password" class="form-control" name="password1"  placeholder="Enter Password" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newUsername" class="form-label">Retype: </label>
-                        {{form.password2}}
+                        <input type="password" class="form-control" name="password2"  placeholder="Re type Password" required>
                     </div>
                 </div>
                 <br>

@@ -1,8 +1,8 @@
 from django.contrib import auth
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Buy, Reserve, Borrow
-from .forms import CreateUserForm, BuyForm, ReserveForm, BorrowForm
+from .models import *
+from .forms import *
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -13,25 +13,43 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-@login_required(login_url='login')
 def administrator(request):
-    
-    if request.user.is_authenticated and request.user.is_staff:
+    if request.user.is_authenticated and request.user.is_superuser:
+
+        getDataInventory = Inventory.objects.all()
+
+        inventory = InventoryForm(request.POST or None)   
+        print(inventory)
+        if inventory.is_valid():
+            inventory.save()
 
         #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES  
         buy_db = Buy.objects.all()
         reserve_db = Reserve.objects.all()
         borrow_db = Borrow.objects.all()
+
+        storeLen1 = len(buy_db)
+        storeLen2 = len(reserve_db)
+        storeLen3 = len(borrow_db)
+
+        store1 = [storeLen1]
+        store2 = [storeLen2]
+        store3 = [storeLen3]
+        
         getdata ={
             'buy_data': buy_db,
             'reserve_data': reserve_db,
-            'borrow_data': borrow_db
+            'borrow_data': borrow_db,
+            'inventory': getDataInventory,
+            'length1': store1,
+            'length2': store2,
+            'length3': store3
+
         }
         return render(request, "administrator.html", getdata)
 
     else:
         return redirect('index')
-
 
 def loginuser(request):
     if request.user.is_authenticated:
@@ -91,13 +109,27 @@ def reserve(request):
 
 @login_required(login_url='login')
 def borrow(request):
+    getEquipment = request.POST.get('items')
+    currentQuants = request.POST.get('quantity')
+    check = Inventory.objects.filter(equipment = getEquipment).values()
+    for x in check:
+        getQuants = x['quantity']
+        getBorrowed = x['borrowers']
+
+        totalQuants = getQuants - int(currentQuants)
+        totalBorrowers = getBorrowed + 1
+
+        Inventory.objects.filter(equipment = getEquipment).update(quantity = totalQuants, borrowers = totalBorrowers)
+
+    getDataInventory = Inventory.objects.all()
     formborrow = BorrowForm(request.POST or None)
     if formborrow.is_valid():
         messages.info(request,'Successfully Submitted!')
         formborrow.save()
 
     context = {
-        'formborrow': formborrow
+        'formborrow': formborrow,
+        'inventory': getDataInventory
     }
     return render(request, "borrow.html", context)
 
@@ -118,35 +150,6 @@ def register(request):
             'form': form
         }
         return render(request, "register.html", context)
-
-
-def student(request, student_id):
-    # student_info = Registration.objects.get(id=student_id)
-    # form = RegistrationForm(request.POST or None, instance=student_info)
-    # context = {
-    #     "form": form,
-    #     "student": student_info
-    #     }
-    
-    # if form.is_valid():
-    #     form.save()
-    #     return redirect('administrator')
-
-    return render(request, 'student.html')
-
-
-@login_required(login_url='login')
-def delete_student(request, student_id):
-    if not request.user.is_superuser:
-        return ...  # TODO prevent access for non-admins
-
-    # student_info = Registration.objects.get(id=student_id)
-
-    # if request.method == "POST":
-    #     student_info.delete()
-    #     return redirect('administrator')
-
-    return render(request, 'student_delete.html')
 
 def editBuy(request, buy_id):
     buy_info = Buy.objects.get(id=buy_id)
