@@ -10,18 +10,24 @@
   <div class="text-center">
     <div class="row">
       <div class="col-md-4">
-        <h4>No. of Students who buy</h4>
+        <i class="fas fa-shopping-cart fa-3x"></i>
+        <br><br>
+        <h4>No. of Students who buy </h4>
         {% for l in length1 %}
         <h4 style="color: rgb(231, 52, 52);">{{ l }}</h4>
         {% endfor %}
       </div>
       <div class="col-md-4">
+        <i class="far fa-calendar-plus fa-3x"></i>
+        <br><br>
         <h4>No. of Students who Reserve</h4>
         {% for l in length2 %}
         <h4 style="color: rgb(231, 52, 52);">{{ l }}</h4>
         {% endfor %}
       </div>
       <div class="col-md-4">
+        <i class="fas fa-user-edit fa-3x"></i>
+        <br><br>
         <h4>No. of Students who Borrow</h4>
         {% for l in length3 %}
         <h4 style="color: rgb(231, 52, 52);">{{ l }}</h4>
@@ -37,6 +43,7 @@
           <th>Equipments</th>
           <th>Quantity Left</th>
           <th>No. of borrowers</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +52,10 @@
           <td>{{ i.equipment }}</td>
           <td>{{ i.quantity }}</td>
           <td>{{ i.borrowers }}</td>
+          <td>
+            <a href="{% url 'editequipment' i.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+            <a href="{% url 'deleteequipment' i.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -82,7 +93,6 @@
     </div>
    </div>
   <br><br>
-    <h3 class="text-center">Admin</h3>
     <p class="text-center">Data of Students who Buy Uniform</p>
     <table class="table table-hover">
         <thead>

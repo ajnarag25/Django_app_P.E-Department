@@ -1,0 +1,40 @@
+{% extends "base2.html" %}
+
+{% block title %}Edit Buy Info -- {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="card custom-container">
+            <div class="text-center">
+                <h2 class="">Update Equipment Table</h2>
+                <hr>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Equipment</label>
+                    <input type="text" class="form-control" name="equipment" value=" {{ equipments.equipment }}">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Quantity</label>
+                    <input type="text" class="form-control" name="quantity" value=" {{ equipments.quantity }}" >
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="" class="form-label">Borrowers</label>
+                    <input type="text" class="form-control" name="borrowers" value=" {{ equipments.borrowers }}" readonly>
+                </div>
+                <div class="col-md-12 mt-4 mb-2" style="text-align: center;">
+                <button class="btn btn-primary" type="submit" name="update">Update</button>
+                <a href="{% url 'administrator' %}" class="btn btn-secondary" type="submit" name="back">Back</a>
+                </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

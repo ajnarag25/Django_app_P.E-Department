@@ -8,13 +8,13 @@
     <div class="container">
         <div class="card custom-container">
             <div class="text-center">
-                <h2 class="">Delete Student Info</h2>
+                <h2 class="">Delete Equipment Info</h2>
                 <hr>
             </div>   
                 <div class="text-center">
                     <form method="POST">
                         {% csrf_token %} 
-                        <h2>Are you sure to delete this student {{ buy.fullname }} ?</h2>
+                        <h2>Are you sure to delete this equipment {{ equipments.equipment }} ?</h2>
                         <button type="submit" class="btn btn-danger">Yes I'm Sure</button>
                         <a href="{% url 'administrator' %}" class="btn btn-primary">No</a>
                     </form>
@@ -24,4 +24,5 @@
     </div>
 
     <br><br><br><br><br>
+
 {% endblock %}

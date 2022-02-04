@@ -166,13 +166,17 @@ def editBuy(request, buy_id):
     return render(request, 'buy_edit.html', context)
 
 def deletebuy(request, buy_id):
+    buy_info = Buy.objects.get(id=buy_id)
     buy_del = Buy.objects.get(id=buy_id)
 
+    context = {
+        "buy": buy_info
+        }
     if request.method == "POST":
         buy_del.delete()
         return redirect('administrator')
 
-    return render(request, 'buy_delete.html')
+    return render(request, 'buy_delete.html', context)
 
 def editReserve(request, reserve_id):
     reserve_info = Reserve.objects.get(id=reserve_id)
@@ -189,13 +193,17 @@ def editReserve(request, reserve_id):
     return render(request, 'reserve_edit.html', context)
 
 def deletereserve(request, reserve_id):
+    reserve_info = Reserve.objects.get(id=reserve_id)
     reserve_del = Reserve.objects.get(id=reserve_id)
 
+    context = {
+        "reserve": reserve_info
+    }
     if request.method == "POST":
         reserve_del.delete()
         return redirect('administrator')
 
-    return render(request, 'reserve_delete.html')
+    return render(request, 'reserve_delete.html', context)
 
 
 def editBorrow(request, borrow_id):
@@ -213,13 +221,46 @@ def editBorrow(request, borrow_id):
     return render(request, 'borrow_edit.html', context)
 
 def deleteborrow(request, borrow_id):
+    borrow_info = Borrow.objects.get(id=borrow_id)
     borrow_del = Borrow.objects.get(id=borrow_id)
 
+    context = {
+        "borrow": borrow_info
+        }
     if request.method == "POST":
         borrow_del.delete()
         return redirect('administrator')
 
-    return render(request, 'borrow_delete.html')
+    return render(request, 'borrow_delete.html', context)
+
+
+def editEquipment(request, equipment_id):
+    equipment_info = Inventory.objects.get(id = equipment_id)
+    equipment_form = InventoryForm(request.POST or None, instance = equipment_info)
+
+    context = {
+        'equipments': equipment_info
+    }
+
+    if equipment_form.is_valid():
+        equipment_form.save()
+        return redirect('administrator')
+
+    return render(request, 'inventory_edit.html', context)
+
+def deleteequipment(request, equipment_id):
+    equipment_info = Inventory.objects.get(id = equipment_id)
+    equipment_del = Inventory.objects.get(id=equipment_id)
+
+    context = {
+        'equipments': equipment_info
+    }
+
+    if request.method == "POST":
+        equipment_del.delete()
+        return redirect('administrator')
+
+    return render(request, 'inventory_delete.html', context)
 
 def logoutUser(request):
     logout(request)
