@@ -33,8 +33,12 @@
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://use.fontawesome.com/445d09784c.js"></script>
-
-
+    {% for message in messages %}
+    <script>
+        swal("{{message}}","");
+    </script>
+    {% endfor %}	
 </body>
 </html>

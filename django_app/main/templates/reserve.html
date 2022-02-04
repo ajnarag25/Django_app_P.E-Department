@@ -7,9 +7,6 @@
     <div class="jumbotron">
         <div class="container">
             <div class="card custom-container">
-                {% for message in messages %}
-                <h3 id="messages" style="color: red;">{{message}}</h3>
-                {% endfor %}
                 <div class="text-center">
                     <h2 class="">Reserve Uniform</h2>
                     <hr>
@@ -40,7 +37,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="contact">Gender:</label>
-                            <select name="gender" class="form-control">
+                            <select name="gender" class="form-control" required>
                                 <option selected disabled="true">Select Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -48,7 +45,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="course">Course</label>
-                            <select name="course" class="form-control" >
+                            <select name="course" class="form-control" required>
                                 <option selected disabled="true">Select Course</option>
                                 <option>BET-COET</option>
                                 <option>BET-MT</option>
@@ -58,7 +55,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="strand">Strand</label>
-                            <select name="strand" class="form-control" >
+                            <select name="strand" class="form-control" required>
                                 <option selected disabled="true">Select Strand</option>
                                 <option>STEM</option>
                                 <option>NON-STEM</option>
@@ -95,7 +92,7 @@
                     
                     <div class="form-group">
                         <label for="course">Size</label>
-                        <select name="size" class="form-control" >
+                        <select name="size" class="form-control" required>
                             <option selected disabled="true">Select Size</option>
                             <option>Small</option>
                             <option>Medium</option>

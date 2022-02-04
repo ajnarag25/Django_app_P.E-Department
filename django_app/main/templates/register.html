@@ -51,16 +51,16 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="newPassword" class="form-label">Password: </label>  
-                        <input type="password" class="form-control" name="password1"  placeholder="Enter Password" required>
+                        <input type="password" class="form-control" id="pass1" name="password1"  placeholder="Enter Password" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="newUsername" class="form-label">Retype: </label>
-                        <input type="password" class="form-control" name="password2"  placeholder="Re type Password" required>
+                        <input type="password" class="form-control" id="pass2" name="password2"  placeholder="Re type Password" required>
                     </div>
                 </div>
                 <br>
                 <div class="text-center">
-                    <button type="submit" class="button-custom responsive-custom-btn">Register</button>
+                    <button type="submit" id="reg" class="button-custom responsive-custom-btn">Register</button>
                     <hr>
                     <p>Registered already? <a href="{% url 'login' %}">Click Here to Login</a></p>
                 </div>

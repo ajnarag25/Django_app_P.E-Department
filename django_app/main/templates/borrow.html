@@ -7,9 +7,6 @@
     <div class="jumbotron">
         <div class="container">
             <div class="card custom-container">
-                {% for message in messages %}
-                <h3 id="messages" style="color: red;">{{message}}</h3>
-                {% endfor %}
                 <div class="text-center">
                     <h2 class="">Borrow Equipments</h2>
                     <hr>
@@ -40,7 +37,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="course">Course</label>
-                            <select name="course" class="form-control" >
+                            <select name="course" class="form-control" required>
                                 <option selected disabled="true">Select Course</option>
                                 <option>BET-COET</option>
                                 <option>BET-MT</option>
@@ -50,7 +47,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="strand">Strand</label>
-                            <select name="strand" class="form-control" >
+                            <select name="strand" class="form-control" required>
                                 <option selected disabled="true">Select Strand</option>
                                 <option>STEM</option>
                                 <option>NON-STEM</option>
@@ -67,7 +64,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="items">Select an item</label>
-                            <select name="items" class="form-control" >
+                            <select name="items" class="form-control" required >
                                 <option selected disabled="true">Select Item</option>
                                 {% for x in inventory %}
                                 <option value="{{ x.equipment }}">{{ x.equipment }}</option>
@@ -87,11 +84,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="d-borrow">Date of Borrow</label>
-                            <input name="dateofborrow" type="date" class="form-control">
+                            <input name="dateofborrow" type="date" class="form-control" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="d-return">Date of Return</label>
-                            <input name="dateofreturn" type="date" class="form-control">
+                            <input name="dateofreturn" type="date" class="form-control" required>
                         </div>
                     </div>
                     <br>

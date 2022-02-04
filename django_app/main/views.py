@@ -19,8 +19,8 @@ def administrator(request):
         getDataInventory = Inventory.objects.all()
 
         inventory = InventoryForm(request.POST or None)   
-        print(inventory)
         if inventory.is_valid():
+            messages.info(request,'Successfully Added the Equipment')
             inventory.save()
 
         #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES  
@@ -69,9 +69,10 @@ def loginuser(request):
                     return redirect('index')
             
             else:
-                messages.info(request,'Username/Password is incorrect')
+                messages.info(request,'Username/Password is Incorrect')
         
-        context = {}
+        context = {
+        }
         return render(request, 'login.html',context)
     
     #return render(request, 'login.html')
@@ -88,6 +89,7 @@ def buy(request):
     if formbuy.is_valid():
         messages.info(request,'Successfully Submitted!')
         formbuy.save()
+    
     context = {
         'formbuy': formbuy
     }
@@ -141,10 +143,11 @@ def register(request):
         form = CreateUserForm()
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
+            messages.info(request,'Something went wrong!')
             if form.is_valid():
+                messages.info(request,'Successfully Registered your Account!')
                 form.save()
                 return redirect('login')
- 
 
         context = {
             'form': form
@@ -160,6 +163,7 @@ def editBuy(request, buy_id):
         }
     
     if form.is_valid():
+        messages.info(request,'Successfully Updated!')
         form.save()
         return redirect('administrator')
 
@@ -173,6 +177,7 @@ def deletebuy(request, buy_id):
         "buy": buy_info
         }
     if request.method == "POST":
+        messages.info(request,'Successfully Deleted!')
         buy_del.delete()
         return redirect('administrator')
 
@@ -187,6 +192,7 @@ def editReserve(request, reserve_id):
         }
     
     if form.is_valid():
+        messages.info(request,'Successfully Updated!')
         form.save()
         return redirect('administrator')
 
@@ -200,6 +206,7 @@ def deletereserve(request, reserve_id):
         "reserve": reserve_info
     }
     if request.method == "POST":
+        messages.info(request,'Successfully Deleted!')
         reserve_del.delete()
         return redirect('administrator')
 
@@ -215,6 +222,7 @@ def editBorrow(request, borrow_id):
         }
     
     if form.is_valid():
+        messages.info(request,'Successfully Updated!')
         form.save()
         return redirect('administrator')
 
@@ -228,6 +236,7 @@ def deleteborrow(request, borrow_id):
         "borrow": borrow_info
         }
     if request.method == "POST":
+        messages.info(request,'Successfully Deleted!')
         borrow_del.delete()
         return redirect('administrator')
 
@@ -243,6 +252,7 @@ def editEquipment(request, equipment_id):
     }
 
     if equipment_form.is_valid():
+        messages.info(request,'Successfully Updated!')
         equipment_form.save()
         return redirect('administrator')
 
@@ -257,6 +267,7 @@ def deleteequipment(request, equipment_id):
     }
 
     if request.method == "POST":
+        messages.info(request,'Successfully Deleted!')
         equipment_del.delete()
         return redirect('administrator')
 
