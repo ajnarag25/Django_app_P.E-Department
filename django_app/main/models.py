@@ -3,6 +3,7 @@ from django.db import models
 
 class Buy(models.Model):
     idnum = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
     fullname = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     contact = models.CharField(max_length=100)
@@ -14,9 +15,14 @@ class Buy(models.Model):
     slacks = models.IntegerField()
     joggingpant = models.IntegerField()
     size = models.CharField(max_length=100)
+    mop = models.CharField(max_length=100)
+    addresses = models.CharField(max_length=100)
+    total = models.IntegerField()
+    status = models.CharField(max_length=100)
 
 class Reserve(models.Model):
     idnum = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
     fullname = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     contact = models.CharField(max_length=100)
@@ -28,9 +34,12 @@ class Reserve(models.Model):
     slacks = models.IntegerField()
     joggingpant = models.IntegerField()
     size = models.CharField(max_length=100)
+    total = models.IntegerField()
+    status = models.CharField(max_length=100)
 
 class Borrow(models.Model):
     idnum = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
     fullname = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     contact = models.CharField(max_length=100)
@@ -38,8 +47,9 @@ class Borrow(models.Model):
     strand = models.CharField(max_length=100)
     items = models.CharField(max_length=100)
     quantity = models.IntegerField()
-    dateofborrow = models.DateField()
-    dateofreturn = models.DateField()
+    dateofborrow = models.CharField(max_length=100)
+    dateofreturn = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
 
 
 class Inventory(models.Model):

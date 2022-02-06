@@ -1,3 +1,4 @@
+from getpass import getuser
 from django.contrib import auth
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
@@ -17,6 +18,25 @@ def administrator(request):
     if request.user.is_authenticated and request.user.is_superuser:
 
         getDataInventory = Inventory.objects.all()
+
+        ids1 = request.POST.get('getId')
+        stat1 = request.POST.get('stats')
+        ids2 = request.POST.get('getId2')
+        stat2 = request.POST.get('stats2')
+        ids3 = request.POST.get('getId3')
+        stat3 = request.POST.get('stats3')
+
+        if ids1 != None and stat1 != None:
+            Buy.objects.filter(id = ids1).update(status=stat1)
+            messages.info(request,'Successfully Updated the status')
+
+        if ids2 != None and stat2 != None:
+            Reserve.objects.filter(id = ids2).update(status=stat2)
+            messages.info(request,'Successfully Updated the status')
+        
+        if ids3 != None and stat3 != None:
+            Borrow.objects.filter(id = ids3).update(status=stat3)
+            messages.info(request,'Successfully Updated the status')
 
         inventory = InventoryForm(request.POST or None)   
         if inventory.is_valid():
@@ -58,6 +78,7 @@ def loginuser(request):
         if request.method == 'POST':
             userrr = request.POST.get('username')
             passw = request.POST.get('password') 
+            request.session['username'] = userrr
             user = authenticate(request, username=userrr,password=passw)
  
             if user is not None:
@@ -85,34 +106,68 @@ def index(request):
 
 @login_required(login_url='login')
 def buy(request):
+    getUser = request.session['username'] 
+    d1 = request.POST.get('fullname')
+    d2 = request.POST.get('email')
+    d3 = request.POST.get('contact')
+    d4 = request.POST.get('course')
+    d5 = request.POST.get('mop')
+    d6 = request.POST.get('addresses')
+    d7 = request.POST.get('total')
     formbuy = BuyForm(request.POST or None)
-    if formbuy.is_valid():
-        messages.info(request,'Successfully Submitted!')
-        formbuy.save()
+    if request.method == 'POST':
+        messages.info(request,'Something went wrong!')
+        if formbuy.is_valid():
+            messages.info(request,'Successfully Submitted!')
+            request.session['fullname'] = d1
+            request.session['email'] = d2
+            request.session['contact'] = d3
+            request.session['course'] = d4
+            request.session['mop'] = d5
+            request.session['address'] = d6
+            request.session['total'] = d7
+            formbuy.save()
+            return redirect('success')
     
     context = {
-        'formbuy': formbuy
+        'formbuy': formbuy,
+        'username': getUser
     }
     return render(request, "buy.html", context)
 
 
 @login_required(login_url='login')
 def reserve(request):
+    getUser = request.session['username'] 
     formreserve = ReserveForm(request.POST or None)
-    if formreserve.is_valid():
-        messages.info(request,'Successfully Submitted!')
-        formreserve.save()
-
+    if request.method == 'POST':
+        messages.info(request,'Something went wrong!')
+        if formreserve.is_valid():
+            messages.info(request,'Successfully submitted please wait for the confirmation in your order, kindly check your transaction for the meantime if it is available for pick up')
+            formreserve.save()
+            return redirect('index')
     context = {
-        'formreserve': formreserve
+        'formreserve': formreserve,
+        'username': getUser
     }
     return render(request, "reserve.html", context)
 
 
 @login_required(login_url='login')
 def borrow(request):
+    getUser = request.session['username'] 
     getEquipment = request.POST.get('items')
     currentQuants = request.POST.get('quantity')
+
+    b1 = request.POST.get('fullname')
+    b2 = request.POST.get('email')
+    b3 = request.POST.get('contact')
+    b4 = request.POST.get('course')
+    b5 = request.POST.get('items')
+    b6 = request.POST.get('quantity')
+    b7 = request.POST.get('dateofborrow')
+    b8 = request.POST.get('dateofreturn')
+
     check = Inventory.objects.filter(equipment = getEquipment).values()
     for x in check:
         getQuants = x['quantity']
@@ -125,13 +180,25 @@ def borrow(request):
 
     getDataInventory = Inventory.objects.all()
     formborrow = BorrowForm(request.POST or None)
-    if formborrow.is_valid():
-        messages.info(request,'Successfully Submitted!')
-        formborrow.save()
+    if request.method == 'POST':
+        messages.info(request,'Something went wrong!')
+        if formborrow.is_valid():
+            messages.info(request,'Successfully Submitted!')
+            request.session['fullname'] = b1
+            request.session['email'] = b2
+            request.session['contact'] = b3
+            request.session['course'] = b4
+            request.session['items'] = b5
+            request.session['quantity'] = b6
+            request.session['dateofborrow'] = b7
+            request.session['dateofreturn'] = b8
+            formborrow.save()
+            return redirect('success2')
 
     context = {
         'formborrow': formborrow,
-        'inventory': getDataInventory
+        'inventory': getDataInventory,
+        'username': getUser
     }
     return render(request, "borrow.html", context)
 
@@ -221,6 +288,7 @@ def editBorrow(request, borrow_id):
         "borrow": borrow_info
         }
     
+    print(form)
     if form.is_valid():
         messages.info(request,'Successfully Updated!')
         form.save()
@@ -276,3 +344,73 @@ def deleteequipment(request, equipment_id):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+
+def SuccessPage(request):
+    g1 = request.session['fullname']
+    g2 = request.session['email']
+    g3 = request.session['contact']
+    g4 = request.session['course']
+    g5 = request.session['mop']
+    g6 = request.session['address']
+    g7 = request.session['total']
+
+    context ={
+        'get1': g1,
+        'get2': g2,
+        'get3': g3,
+        'get4': g4,
+        'get5': g5,
+        'get6': g6,
+        'get7': g7
+
+    }
+    return render(request, 'success.html', context)
+
+def Transaction(request):
+    getusername = request.session['username']
+    checkForm1= Buy.objects.filter(username=getusername).values()
+    checkForm2= Reserve.objects.filter(username=getusername).values()
+    checkForm3= Borrow.objects.filter(username=getusername).values()
+
+    storeList1 = []
+    storeList2 = []
+    storeList3 = []
+    for x in checkForm1:
+        storeList1.append(x)
+    for x in checkForm2:
+        storeList2.append(x)
+    for x in checkForm3:
+        storeList3.append(x)
+    
+    context={
+        'buyData': storeList1,
+        'reserveData': storeList2,
+        'borrowData': storeList3
+    }
+    return render(request, 'transaction.html', context)
+
+
+def SuccessPage2(request):
+    p1 = request.session['fullname']
+    p2 = request.session['email']
+    p3 = request.session['contact']
+    p4 = request.session['course']
+    p5 = request.session['items']
+    p6 = request.session['quantity']
+    p7 = request.session['dateofborrow']
+    p8 = request.session['dateofreturn']
+
+    context ={
+        'get1': p1,
+        'get2': p2,
+        'get3': p3,
+        'get4': p4,
+        'get5': p5,
+        'get6': p6,
+        'get7': p7,
+        'get8': p8
+
+    }
+
+    return render(request, 'success2.html', context)

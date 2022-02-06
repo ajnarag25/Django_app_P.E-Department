@@ -32,6 +32,7 @@
 
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jspdf.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://use.fontawesome.com/445d09784c.js"></script>
@@ -40,5 +41,176 @@
         swal("{{message}}","");
     </script>
     {% endfor %}	
+    <script>
+        $(document).ready(function(){
+            $('#checkOrder').click(function(){
+                g1 = $('#d1').val();
+                g2 = $('#d2').val();
+                g3 = $('#d3').val();
+                g4 = $('#d4').val();
+                g5 = $('#d5').val();
+                g6 = $('#d6').val();
+                g7 = $('#d7').val();
+                g8 = $('#d8').val();
+                g9 = $('#d9').val();
+                g10 = $('#d10').val();
+                g11 = $('#d11').val();
+                g12 = $('#d12').val();
+                g13 = $('#d13').val();
+                g14 = $('#d14').val();
+
+                price1 = g8 * 250
+                price2 = g9 * 250
+                price3 = g10 * 300
+                price4 = g11 * 500
+                gettotal = price1 + price2 + price3 + price4
+                
+                if (g8 == 0 && g9 == 0 && g10 == 0 && g11 == 0){
+                    swal('Please Submit a specific order for the shorts/shirts/slacks/joggingpants','')
+                    $('#sub').prop('disabled', true);
+                }
+                else{
+                    $('#sub').prop('disabled', false);
+                }
+                document.getElementById('idnums').innerHTML = "ID.Number:" + " " + g1 ;
+                document.getElementById('fullnames').innerHTML = "Fullname:" + " " + g2 ;
+                document.getElementById('emails').innerHTML = "Email:" + " " + g3 ;
+                document.getElementById('contacts').innerHTML = "Contact:" + " " + g4 ;
+                document.getElementById('genders').innerHTML = "Gender:" + " " + g5 ;
+                document.getElementById('courses').innerHTML = "Course:" + " " + g6 ;
+                document.getElementById('strands').innerHTML = "Strand:" + " " + g7 ;
+                document.getElementById('shirtss').innerHTML = "Shirts:" + " " + g8 ;
+                document.getElementById('shortss').innerHTML = "Shorts:" + " " + g9 ;
+                document.getElementById('slackss').innerHTML = "Slacks:" + " " + g10 ;
+                document.getElementById('joggingpantss').innerHTML = "Joggingpants:" + " " + g11 ;
+                document.getElementById('mops').innerHTML = "Mode of Payment:" + " " + g12 ;
+                document.getElementById('addresss').innerHTML = "Address:" + " " + g13 ;
+                document.getElementById('sizes').innerHTML = "Size:" + " " + g14 ;
+                document.getElementById('totalss').innerHTML = "Total:" + " " + gettotal ;
+                document.getElementById('statuss').innerHTML = "Status:" + " " + "NEW" ;
+                
+                setTotal = $('#a1').val(gettotal);
+                document.getElementById('a1').innerHTML = setTotal ;
+                
+            })
+            $('#receipt').click(function genPDF() {
+                a1 = $('#d1').val()
+                a2 = $('#d2').val()
+                a3 = $('#d3').val()
+                a4 = $('#d4').val()
+                a5 = $('#d5').val()
+                a6 = $('#d6').val()
+                a7 = $('#d7').val()
+                var doc = new jsPDF();
+                doc.text(80, 20, "Order Details:");
+                doc.text(20, 40, "Fullname: " + a1);
+                doc.text(20, 50, "Email: " + a2);
+                doc.text(20, 60, "Contact: " + a3);
+                doc.text(20, 70, "Course: " + a4);
+                doc.text(20, 80, "Mode of Payment: " + a5);
+                doc.text(20, 90, "Address: " + a6);
+                doc.text(20, 100, "Total Payment: "+ "P" + a7);
+                doc.save('Student Receipt for Order: ' + a1 + '.pdf');
+            })
+            $('#checkReserve').click(function(){
+                b1 = $('#a1').val();
+                b2 = $('#a2').val();
+                b3 = $('#a3').val();
+                b4 = $('#a4').val();
+                b5 = $('#a5').val();
+                b6 = $('#a6').val();
+                b7 = $('#a7').val();
+                b8 = $('#a8').val();
+                b9 = $('#a9').val();
+                b10 = $('#a10').val();
+                b11 = $('#a11').val();
+                b12 = $('#a12').val();
+
+                price1 = b8 * 250
+                price2 = b9 * 250
+                price3 = b10 * 300
+                price4 = b11 * 500
+                gettotals = price1 + price2 + price3 + price4
+
+                if (b8 == 0 && b9 == 0 && b10 == 0 && b11 == 0){
+                    swal('Please Submit a specific order for the shorts/shirts/slacks/joggingpants','')
+                    $('#sub').prop('disabled', true);
+                } else{
+                    $('#sub').prop('disabled', false);
+                }
+
+                document.getElementById('idnums').innerHTML = "ID.Number:" + " " + b1 ;
+                document.getElementById('fullnames').innerHTML = "Fullname:" + " " + b2 ;
+                document.getElementById('emails').innerHTML = "Email:" + " " + b3 ;
+                document.getElementById('contacts').innerHTML = "Contact:" + " " + b4 ;
+                document.getElementById('genders').innerHTML = "Gender:" + " " + b5 ;
+                document.getElementById('courses').innerHTML = "Course:" + " " + b6 ;
+                document.getElementById('strands').innerHTML = "Strand:" + " " + b7 ;
+                document.getElementById('shirtss').innerHTML = "Shirts:" + " " + b8 ;
+                document.getElementById('shortss').innerHTML = "Shorts:" + " " + b9 ;
+                document.getElementById('slackss').innerHTML = "Slacks:" + " " + b10 ;
+                document.getElementById('joggingpantss').innerHTML = "Joggingpants:" + " " + b11 ;
+                document.getElementById('sizes').innerHTML = "Size:" + " " + b12 ;
+                document.getElementById('tots').innerHTML = "Total:" + " " + gettotals ;
+                document.getElementById('stats').innerHTML = "Status:" + " " + "NEW" ;
+
+                setTotal = $('#c1').val(gettotals);
+                document.getElementById('c1').innerHTML = setTotal ;
+
+            })
+            $('#checkBorrow').click(function(){
+                console.log('tae naman e')
+                d1 = $('#b1').val();
+                d2 = $('#b2').val();
+                d3 = $('#b3').val();
+                d4 = $('#b4').val();
+                d5 = $('#b5').val();
+                d6 = $('#b6').val();
+                d7 = $('#b7').val();
+                d8 = $('#b8').val();
+                d9 = $('#b9').val();
+                d10 = $('#b10').val();
+                
+                if (d8 == 0){
+                    swal('Please submit a specific quantity for the equipment to be borrowed!','')
+                    $('#sub').prop('disabled', true);
+                } else{
+                    $('#sub').prop('disabled', false);
+                }
+
+                document.getElementById('idnums').innerHTML = "ID.Number:" + " " + d1 ;
+                document.getElementById('fullnames').innerHTML = "Fullname:" + " " + d2 ;
+                document.getElementById('emails').innerHTML = "Email:" + " " + d3 ;
+                document.getElementById('contacts').innerHTML = "Contact:" + " " + d4 ;
+                document.getElementById('courses').innerHTML = "Course:" + " " + d5 ;
+                document.getElementById('strands').innerHTML = "Strand:" + " " + d6 ;
+                document.getElementById('equips').innerHTML = "Equipment:" + " " + d7 ;
+                document.getElementById('quants').innerHTML = "Quantity:" + " " + d8 ;
+                document.getElementById('dob').innerHTML = "Date of Borrow:" + " " + d9 ;
+                document.getElementById('dor').innerHTML = "Date of Return:" + " " + d10 ;
+            })
+            $('#receipt2').click(function genPDF() {
+                a1 = $('#b1').val()
+                a2 = $('#b2').val()
+                a3 = $('#b3').val()
+                a4 = $('#b4').val()
+                a5 = $('#b5').val()
+                a6 = $('#b6').val()
+                a7 = $('#b7').val()
+                a8 = $('#b8').val()
+                var doc = new jsPDF();
+                doc.text(80, 20, "Order Details:");
+                doc.text(20, 40, "Fullname: " + a1);
+                doc.text(20, 50, "Email: " + a2);
+                doc.text(20, 60, "Contact: " + a3);
+                doc.text(20, 70, "Course: " + a4);
+                doc.text(20, 80, "Equipment to be borrowed: " + a5);
+                doc.text(20, 90, "Total Quantity: " + a6);
+                doc.text(20, 100, "Date of Borrow: " + a7);
+                doc.text(20, 110, "Date of Return: " + a8);
+                doc.save('Student Receipt for Borrow: ' + a1 + '.pdf');
+            })
+        })
+    </script>
 </body>
 </html>

@@ -19,5 +19,8 @@ urlpatterns = [
     path('editborrow/<borrow_id>', views.editBorrow, name="editborrow"),
     path('deleteborrow/<borrow_id>', views.deleteborrow, name="deleteborrow"),
     path('editequipment/<equipment_id>', views.editEquipment, name="editequipment"),
-    path('deleteequipment/<equipment_id>', views.deleteequipment, name="deleteequipment")
+    path('deleteequipment/<equipment_id>', views.deleteequipment, name="deleteequipment"),
+    path('success', views.SuccessPage, name="success"),
+    path('transaction', views.Transaction, name="transaction"),
+    path('success2', views.SuccessPage2, name="success2")
 ]

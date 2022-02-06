@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Borrow Equipment -- {% endblock %}
+
+{% block content %}
+<div class="container" style="background-color: #C5C5C5">  
+<br><br>
+   <div class="container">
+       <div class="row">
+           <div class="col">
+               <h3>You have successfully submit your form:</h3>
+               <br>
+                <h4>Fullname: {{get1}} </h4>
+                <h4>Email: {{get2}}</h4>
+                <h4>Contact: {{get3}}</h4>
+                <h4>Course: {{get4}}</h4>
+                <h4>Equipment to be borrowed: {{get5}}</h4>
+                <h4>Quantity: {{get6}}</h4>
+                <h4>Date of Borrow: {{get7}}</h4>
+                <h4>Date of Return: {{get8}}</h4>
+                <br>
+                <h4>Thank You, have a nice day!</h4>
+                <input type="hidden" id="b1" value="{{get1}}">
+                <input type="hidden" id="b2" value="{{get2}}">
+                <input type="hidden" id="b3" value="{{get3}}">
+                <input type="hidden" id="b4" value="{{get4}}">
+                <input type="hidden" id="b5" value="{{get5}}">
+                <input type="hidden" id="b6" value="{{get6}}">
+                <input type="hidden" id="b7" value="{{get7}}">
+                <input type="hidden" id="b8" value="{{get8}}">
+            </div>
+
+       </div>
+       <br>
+   </div>
+<br>
+    <div class="text-center">
+        <p>* Kindly download the receipt for the validation of your form and present it upon receiving your equipment*</p>
+        <a type="button" id="receipt2" class="btn btn-success w-100" style="color: white;">Download Receipt</a>
+        <a href="{% url 'index' %}" class="btn btn-primary w-100" >Back</a>
+    </div>
+    <br>
+</div>
+<br><br><br>
+
+{% endblock %}

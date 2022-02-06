@@ -11,6 +11,9 @@
                         <p class="nav-link" id="link" >Welcome, {{request.user}}.</p>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" id="link" href="{% url 'index' %}">Go to Student Main Page</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" id="link" href="{% url 'logout' %}">Logout</a>
                     </li>
                 </ul>

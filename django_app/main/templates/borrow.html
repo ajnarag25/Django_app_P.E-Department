@@ -17,27 +17,28 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="id">I.D Number</label>
-                            <input type="text" class="form-control" name="idnum" placeholder="Enter I.D Number" required>
+                            <input type="text" class="form-control" id="b1" name="idnum" placeholder="Enter I.D Number" required>
+                            <input type="hidden" name="username" value="{{username}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="fullname">Full Name</label>
-                            <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" required>
+                            <input type="text" class="form-control" id="b2" name="fullname" placeholder="Enter Fullname" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+                            <input type="email" class="form-control" id="b3" name="email" placeholder="Enter Email" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="contact">Contact Number</label>
-                            <input type="text" class="form-control" name="contact" placeholder="Enter Contact Number" required>
+                            <input type="text" class="form-control" id="b4" name="contact" placeholder="Enter Contact Number" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="course">Course</label>
-                            <select name="course" class="form-control" required>
+                            <select name="course" id="b5" class="form-control" required>
                                 <option selected disabled="true">Select Course</option>
                                 <option>BET-COET</option>
                                 <option>BET-MT</option>
@@ -47,7 +48,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="strand">Strand</label>
-                            <select name="strand" class="form-control" required>
+                            <select name="strand" id="b6" class="form-control" required>
                                 <option selected disabled="true">Select Strand</option>
                                 <option>STEM</option>
                                 <option>NON-STEM</option>
@@ -62,33 +63,29 @@
                     <br>
 
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="items">Select an item</label>
-                            <select name="items" class="form-control" required >
+                            <select name="items" id="b7" class="form-control" required >
                                 <option selected disabled="true">Select Item</option>
                                 {% for x in inventory %}
                                 <option value="{{ x.equipment }}">{{ x.equipment }}</option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="quantity">Quantity</label>
-                            <input type="number" name="quantity" class="form-control" value="1" min="0" max="20">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="itemfind">*If the item is not in the list please type in here*</label>
-                            <input type="text" name="itemfind" class="form-control" id="itemfind" placeholder="Enter Item">
+                            <input type="number" id="b8" name="quantity" class="form-control" value="1" min="0" max="20">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="d-borrow">Date of Borrow</label>
-                            <input name="dateofborrow" type="date" class="form-control" required>
+                            <input name="dateofborrow" id="b9" type="date" class="form-control" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="d-return">Date of Return</label>
-                            <input name="dateofreturn" type="date" class="form-control" required>
+                            <input name="dateofreturn" id="b10" type="date" class="form-control" required>
                         </div>
                     </div>
                     <br>
@@ -97,16 +94,44 @@
                         <br>
                         <input type= "checkbox" id="checkbox1" required>
 	                    <label for = "checkbox1"> I Agree in terms and condition</label>
+                        <input type="hidden" id="borrowStat" name="status" value="New">
                     </div>
                     <br>
                 
                     <div class="text-center">
-                        <button type="submit" class="button-custom responsive-custom-btn">Submit Form</button>
+                        <button type="button" data-bs-toggle="modal" id="checkBorrow" data-bs-target="#borrow" class="button-custom responsive-custom-btn">Submit Form</button>
                         <hr>
                     </div>
-                </form>
             </div>
         </div>
     </div>
     
+    <div class="modal fade" id="borrow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Borrow Details:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 id="idnums"></h5>
+                    <h5 id="fullnames"></h5>
+                    <h5 id="emails"></h5>
+                    <h5 id="contacts"></h5>
+                    <h5 id="courses"></h5>
+                    <h5 id="strands"></h5>
+                    <h5 id="equips"></h5>
+                    <h5 id="quants"></h5>
+                    <h5 id="dob"></h5>
+                    <h5 id="dor"></h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="sub" name="checkBorrow">Submit Form</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

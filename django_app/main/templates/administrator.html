@@ -6,7 +6,8 @@
 <br>
 <br>
 
-<div class="container">
+<div class="tableData overflow-auto">
+  <div class="container">
   <div class="text-center">
     <div class="row">
       <div class="col-md-4">
@@ -61,7 +62,7 @@
       </tbody>
     </table>
   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inventoryModal"><i class='bx bx-plus-medical' ></i> Add Equipment</button>
-
+    </div>
    <!--MODAL INVENTORY-->
    <div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -94,88 +95,103 @@
    </div>
   <br><br>
     <p class="text-center">Data of Students who Buy Uniform</p>
+    <div class="container">
     <table class="table table-hover">
         <thead>
           <tr>
-            <th>I.D Number</th>
-            <th>Fullname</th>
+            <th>I.D Number / Fullname</th>
             <th>Email</th>
-            <th>Contact</th>
-            <th>Gender</th>
             <th>Course</th>
-            <th>Strand</th>
-            <th>Shirt</th>
-            <th>Short</th>
-            <th>Slacks</th>
-            <th>Joggingpants</th>
-            <th>Size</th>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>J1</th>
+            <th>Mode of Payment</th>
+            <th>Total</th>
+            <th>Set Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {% for buy in buy_data %}
           <tr>
-            <td>{{ buy.idnum }}</td>
-            <td>{{ buy.fullname }}</td>
+            <td>{{buy.idnum}} <br> {{ buy.fullname }}</td>
             <td>{{ buy.email }}</td>
-            <td>{{ buy.contact }}</td>
-            <td>{{ buy.gender }}</td>
             <td>{{ buy.course }}</td>
-            <td>{{ buy.strand }}</td>
             <td>{{ buy.shirt }}</td>
             <td>{{ buy.short }}</td>
             <td>{{ buy.slacks }}</td>
             <td>{{ buy.joggingpant }}</td>
-            <td>{{ buy.size }}</td>
+            <td>{{ buy.mop }}</td>
+            <td>{{ buy.total }}</td>
+            <td>
+              <form method="POST">
+              {% csrf_token %}
+              <select name="stats" id="" class="form-control">
+                <option selected disabled="true">{{ buy.status }}</option>
+                <option value="Paid">Paid</option>
+                <option value="Decline">Decline</option>
+              </select>
+              <input type="hidden" name='getId' value="{{ buy.id }}">
+            </td>
             <td> 
               <a href="{% url 'editbuy' buy.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+              <button type="submit" class="btn btn-success"> <i class='bx bx-check nav_icon'></i></button>
+              </form>
               <a href="{% url 'deletebuy' buy.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-
+    </div>
 
     <br>
     <br>
-
+    <div class="container">
     <p class="text-center">Data of Students who Reserve Uniform</p>
     <table class="table table-hover">
         <thead>
           <tr>
-            <th>I.D Number</th>
-            <th>Fullname</th>
+            <th>I.D Number / Fullname</th>
             <th>Email</th>
             <th>Contact</th>
-            <th>Gender</th>
             <th>Course</th>
-            <th>Strand</th>
-            <th>Shirt</th>
-            <th>Short</th>
-            <th>Slacks</th>
-            <th>Joggingpants</th>
-            <th>Size</th>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>J1</th>
+            <th>Total</th>
+            <th>Set Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {% for reserve in reserve_data %}
           <tr>
-            <td>{{ reserve.idnum }}</td>
-            <td>{{ reserve.fullname }}</td>
+            <td>{{ reserve.idnum }} <br> {{ reserve.fullname }} </td>
             <td>{{ reserve.email }}</td>
             <td>{{ reserve.contact }}</td>
-            <td>{{ reserve.gender }}</td>
             <td>{{ reserve.course }}</td>
-            <td>{{ reserve.strand }}</td>
             <td>{{ reserve.shirt }}</td>
             <td>{{ reserve.short }}</td>
             <td>{{ reserve.slacks }}</td>
             <td>{{ reserve.joggingpant }}</td>
-            <td>{{ reserve.size }}</td>
+            <td>{{ reserve.total }}</td>
+            <td>
+              <form method="POST">
+                {% csrf_token %}
+                <select name="stats2" id="" class="form-control">
+                  <option selected disabled="true">{{ reserve.status }}</option>
+                  <option value="Claim your order">Claim your order</option>
+                  <option value="Decline">Decline</option>
+                </select>
+                <input type="hidden" name='getId2' value="{{ reserve.id }}">
+            </td>
             <td> 
               <a href="{% url 'editreserve' reserve.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+              <button type="submit" class="btn btn-success"> <i class='bx bx-check nav_icon'></i></button>
+              </form>
               <a href="{% url 'deletereserve' reserve.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
             </td>
           </tr>
@@ -191,34 +207,42 @@
     <table class="table table-hover">
         <thead>
           <tr>
-            <th>I.D Number</th>
-            <th>Fullname</th>
-            <th>Email</th>
+            <th>I.D Number / Fullname</th>
             <th>Contact</th>
             <th>Course</th>
-            <th>Strand</th>
             <th>Items</th>
             <th>Quantity</th>
             <th>Date of Borrow</th>
             <th>Date of Return</th>
+            <th>Set Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {% for borrow in borrow_data %}
           <tr>
-            <td>{{ borrow.idnum }}</td>
-            <td>{{ borrow.fullname }}</td>
-            <td>{{ borrow.email }}</td>
+            <td>{{ borrow.idnum }} <br> {{ borrow.fullname }}</td>
             <td>{{ borrow.contact }}</td>
             <td>{{ borrow.course }}</td>
-            <td>{{ borrow.strand }}</td>
             <td>{{ borrow.items }}</td>
             <td>{{ borrow.quantity }}</td>
             <td>{{ borrow.dateofborrow }}</td>
             <td>{{ borrow.dateofreturn }}</td>
+            <td>
+              <form method="POST">
+                {% csrf_token %}
+                <select name="stats3" id="" class="form-control">
+                  <option selected disabled="true">{{ borrow.status }}</option>
+                  <option value="Claim your Equipment">Claim your Equipment</option>
+                  <option value="Not Returning">Not Returning</option>
+                  <option value="Decline">Decline</option>
+                </select>
+                <input type="hidden" name='getId3' value="{{ borrow.id }}">
+            </td>
             <td> 
               <a href="{% url 'editborrow' borrow.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+              <button type="submit" class="btn btn-success"> <i class='bx bx-check nav_icon'></i></button>
+              </form>
               <a href="{% url 'deleteborrow' borrow.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
             </td>
           </tr>
@@ -228,7 +252,7 @@
       </table>
 
 </div>
-
+</div>
 <br>
 <br>
 <br>

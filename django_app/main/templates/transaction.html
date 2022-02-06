@@ -1,0 +1,89 @@
+{% extends "base3.html" %}
+
+{% block title %}My Transaction {% endblock %}
+
+{% block content %}
+<br>
+<br>
+
+<div class="container">
+  <p class="text-center">Buy & Reserve</p>
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Fullname</th>
+          <th>Shirt</th>
+          <th>Short</th>
+          <th>Slacks</th>
+          <th>Joggingpant</th>
+          <th>Mode of Payment</th>
+          <th>Total Payment</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in buyData %}
+        <tr>
+          <td>Buy Uniform</td>
+          <td>{{ d.fullname }}</td>
+          <td>{{ d.shirt }}</td>
+          <td>{{ d.short }}</td>
+          <td>{{ d.slacks }}</td>
+          <td>{{ d.joggingpant }}</td>
+          <td>{{ d.mop }}</td>
+          <td>P {{ d.total }}</td>
+          <td>{{ d.status }}</td>
+        </tr>
+        {% endfor %}
+        {% for r in reserveData %}
+        <tr>
+          <td>Reserve Uniform</td>
+          <td>{{ r.fullname }}</td>
+          <td>{{ r.shirt }}</td>
+          <td>{{ r.short }}</td>
+          <td>{{ r.slacks }}</td>
+          <td>{{ r.joggingpant }}</td>
+          <td>N/A</td>
+          <td>P {{ r.total }}</td>
+          <td>{{ r.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br><br>
+    <p class="text-center">Borrow</p>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Fullname</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Course</th>
+          <th>Equipment</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for b in borrowData %}
+        <tr>
+          <td>Borrow Equipment</td>
+          <td>{{ b.fullname }}</td>
+          <td>{{ b.email }}</td>
+          <td>{{ b.contact }}</td>
+          <td>{{ b.course }}</td>
+          <td>{{ b.items }}</td>
+          <td>{{ b.quantity }}</td>
+          <td>{{ b.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+</div>
+
+
+
+{% endblock %}

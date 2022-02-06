@@ -44,24 +44,27 @@
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Shirt</label>
-                    <input type="text" class="form-control" name="shirt" value=" {{ reserve.shirt }}">
+                    <input type="text" class="form-control" name="shirt" value=" {{ reserve.shirt }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Short</label>
-                    <input type="text" class="form-control" name="short" value=" {{ reserve.short }}">
+                    <input type="text" class="form-control" name="short" value=" {{ reserve.short }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Slacks</label>
-                    <input type="text" class="form-control" name="slacks" value=" {{ reserve.slacks }}">
+                    <input type="text" class="form-control" name="slacks" value=" {{ reserve.slacks }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Joggingpants</label>
-                    <input type="text" class="form-control" name="joggingpant" value=" {{ reserve.joggingpant }}">
+                    <input type="text" class="form-control" name="joggingpant" value=" {{ reserve.joggingpant }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Size</label>
-                    <input type="text" class="form-control" name="size" value=" {{ reserve.size }}">
+                    <input type="text" class="form-control" name="size" value=" {{ reserve.size }}" readonly>
                 </div>
+                <input type="hidden" class="form-control" name="total" value=" {{ reserve.total }}">
+                <input type="hidden" class="form-control" name="status" value=" {{ reserve.status}}">
+                <input type="hidden" class="form-control" name="username" value=" {{ reserve.username }}">
                 <div class="col-md-12 mt-4 mb-2" style="text-align: center;">
                 <button class="btn btn-primary" type="submit" name="update">Update</button>
                 <a href="{% url 'administrator' %}" class="btn btn-secondary" type="submit" name="back">Back</a>

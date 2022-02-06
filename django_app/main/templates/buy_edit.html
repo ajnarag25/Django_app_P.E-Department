@@ -44,24 +44,29 @@
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Shirt</label>
-                    <input type="text" class="form-control" name="shirt" value=" {{ buy.shirt }}">
+                    <input type="text" class="form-control" name="shirt" value=" {{ buy.shirt }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Short</label>
-                    <input type="text" class="form-control" name="short" value=" {{ buy.short }}">
+                    <input type="text" class="form-control" name="short" value=" {{ buy.short }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Slacks</label>
-                    <input type="text" class="form-control" name="slacks" value=" {{ buy.slacks }}">
+                    <input type="text" class="form-control" name="slacks" value=" {{ buy.slacks }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Joggingpants</label>
-                    <input type="text" class="form-control" name="joggingpant" value=" {{ buy.joggingpant }}">
+                    <input type="text" class="form-control" name="joggingpant" value=" {{ buy.joggingpant }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Size</label>
-                    <input type="text" class="form-control" name="size" value=" {{ buy.size }}">
+                    <input type="text" class="form-control" name="size" value=" {{ buy.size }}" readonly>
                 </div>
+                <input type="hidden" class="form-control" name="mop" value=" {{ buy.mop }}">
+                <input type="hidden" class="form-control" name="addresses" value=" {{ buy.addresses }}">
+                <input type="hidden" class="form-control" name="total" value=" {{ buy.total }}">
+                <input type="hidden" class="form-control" name="status" value=" {{ buy.status}}">
+                <input type="hidden" class="form-control" name="username" value=" {{ buy.username }}">
                 <div class="col-md-12 mt-4 mb-2" style="text-align: center;">
                 <button class="btn btn-primary" type="submit" name="update">Update</button>
                 <a href="{% url 'administrator' %}" class="btn btn-secondary" type="submit" name="back">Back</a>

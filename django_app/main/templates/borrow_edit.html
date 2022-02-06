@@ -40,11 +40,11 @@
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Items</label>
-                    <input type="text" class="form-control" name="items" value=" {{ borrow.items }}">
+                    <input type="text" class="form-control" name="items" value=" {{ borrow.items }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Quantity</label>
-                    <input type="text" class="form-control" name="quantity" value=" {{ borrow.quantity }}">
+                    <input type="text" class="form-control" name="quantity" value=" {{ borrow.quantity }}" readonly>
                 </div>
                 <div class="col-md-12 mt-2">
                     <label for="" class="form-label">Date Of Borrow</label>
@@ -54,6 +54,9 @@
                     <label for="" class="form-label">Date Of Return</label>
                     <input type="text" class="form-control" name="dateofreturn" value=" {{ borrow.dateofreturn }}">
                 </div>
+                <input type="hidden" class="form-control" name="status" value=" {{ borrow.status }}">
+                <input type="hidden" class="form-control" name="username" value=" {{ borrow.username }}">
+
                 <div class="col-md-12 mt-4 mb-2" style="text-align: center;">
                 <button class="btn btn-primary" type="submit" name="update">Update</button>
                 <a href="{% url 'administrator' %}" class="btn btn-secondary" type="submit" name="back">Back</a>

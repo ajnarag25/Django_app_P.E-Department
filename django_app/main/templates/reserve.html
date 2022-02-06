@@ -17,49 +17,50 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="id">I.D Number</label>
-                            <input type="text" class="form-control" name="idnum" placeholder="Enter I.D Number" required>
+                            <input type="text" class="form-control" id="a1" name="idnum" placeholder="Enter I.D Number" required>
+                            <input type="hidden" name="username" value="{{username}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="fullname">Full Name</label>
-                            <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" required>
+                            <input type="text" class="form-control" id="a2" name="fullname" placeholder="Enter Fullname" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+                            <input type="email" class="form-control " id="a3" name="email" placeholder="Enter Email" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="contact">Contact Number</label>
-                            <input type="text" class="form-control" name="contact" placeholder="Enter Contact Number" required>
+                            <input type="text" class="form-control" id="a4" name="contact" placeholder="Enter Contact Number" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="contact">Gender:</label>
-                            <select name="gender" class="form-control" required>
+                            <select name="gender" id="a5" class="form-control" required>
                                 <option selected disabled="true">Select Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="course">Course</label>
-                            <select name="course" class="form-control" required>
+                            <select name="course" id="a6" class="form-control" required>
                                 <option selected disabled="true">Select Course</option>
-                                <option>BET-COET</option>
-                                <option>BET-MT</option>
-                                <option>BET-AT</option>
-                                <option>BS-IE</option>
+                                <option value="BET-COET">BET-COET</option>
+                                <option value="BET-MT">BET-MT</option>
+                                <option value="BET-AT">BET-AT</option>
+                                <option value="BS-IE">BS-IE</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="strand">Strand</label>
-                            <select name="strand" class="form-control" required>
+                            <select name="strand" id="a7" class="form-control" required>
                                 <option selected disabled="true">Select Strand</option>
-                                <option>STEM</option>
-                                <option>NON-STEM</option>
-                                <option>NO-STRAND</option>
+                                <option value="STEM">STEM</option>
+                                <option value="NON-STEM">NON-STEM</option>
+                                <option value="NO-STRAND">NO-STRAND</option>
                             </select>
                         </div>
                     </div>
@@ -73,39 +74,72 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="shirt">Shirts</label>
-                            <input type="number" name="shirt" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <label for="shirt">Shirts <b> P 250  each</b></label>
+                            <input type="number" id="a8" name="shirt" class="form-control" value="0" min="0" max="5" name="shirt">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="shirt">Shorts</label>
-                            <input type="number" name="short" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <label for="shirt">Shorts <b> P 250  each</b></label>
+                            <input type="number" id="a9" name="short" class="form-control" value="0" min="0" max="5" name="shirt">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="shirt">Slacks</label>
-                            <input type="number" name="slacks" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <label for="shirt">Slacks <b> P 300  each</b></label>
+                            <input type="number" id="a10" name="slacks" class="form-control" value="0" min="0" max="5" name="shirt">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="shirt">Joggingpants</label>
-                            <input type="number" name="joggingpant" class="form-control" value="1" min="0" max="5" name="shirt">
+                            <label for="shirt">Joggingpants <b> P 500  each</b></label>
+                            <input type="number" id="a11" name="joggingpant" class="form-control" value="0" min="0" max="5" name="shirt">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="course">Size</label>
-                        <select name="size" class="form-control" required>
+                        <select name="size" id="a12" class="form-control" required>
                             <option selected disabled="true">Select Size</option>
                             <option>Small</option>
                             <option>Medium</option>
                             <option>Large</option>
                         </select>
+                        <input type="hidden" id="c1" name="total" value="">
+                        <input type="hidden" id="c2" name="status" value="New">
                     </div>
                     <br>
                 
                     <div class="text-center">
-                        <button type="submit" class="button-custom responsive-custom-btn">Submit Reservation</button>
+                        <button type="button" data-bs-toggle="modal" id="checkReserve" data-bs-target="#reserve" class="button-custom responsive-custom-btn">Submit Reservation</button>
                         <hr>
                     </div>
-                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reserve" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reservation Details:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 id="idnums"></h5>
+                    <h5 id="fullnames"></h5>
+                    <h5 id="emails"></h5>
+                    <h5 id="contacts"></h5>
+                    <h5 id="genders"></h5>
+                    <h5 id="courses"></h5>
+                    <h5 id="strands"></h5>
+                    <h5 id="shirtss"></h5>
+                    <h5 id="shortss"></h5>
+                    <h5 id="slackss"></h5>
+                    <h5 id="joggingpantss"></h5>
+                    <h5 id="sizes"></h5>
+                    <h5 id="tots"></h5>
+                    <h5 id="stats"></h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="sub" name="checkReserve">Submit Order</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
