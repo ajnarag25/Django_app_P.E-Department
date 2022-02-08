@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <link href="{% static 'media/tup-logo.png' %}" rel="icon">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <title>Admin -- P.E Department</title>
+</head>
+
+<body id="body-pd" class="bg-light">
+  <header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+  </header>
+  <div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+      <div> 
+        <a href="{% url 'admin' %}" class="nav_logo"> <img src="{% static 'media/tup-logo.png' %}" style="width: 30px;" alt=""> <span class="nav_logo-name">P.E <br> Department</span> </a>
+        <div class="nav_list">
+          <a href="{% url 'admin' %}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard / <br> Add Equipment</span> </a>
+            <a href="{% url 'adminbuy' %}" class="nav_link">  <i class='bx bx-cart nav_icon'></i> <span class="nav_name">Buy Uniform Table</span> </a>
+            <a href="{% url 'adminreserve' %}" class="nav_link">  <i class='bx bx-calendar nav_icon '></i> <span class="nav_name">Reserve Uniform <br> Table</span> </a>
+            <a href="{% url 'adminborrow' %}" class="nav_link"> <i class='bx bx-edit nav_icon'></i> <span class="nav_name">Borrow Equipment <br> Table</span> </a>
+        </div>
+      </div>
+      <a href="{% url 'logout' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Log out</span> </a>
+    </nav>
+  </div>
+  <!--Container Main start-->
+  <div class="height-100">
+    <div class="row">
+      <div class="col-md text-center" >
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <i class='bx bx-cart nav_icon bx-lg'></i>
+            <br><br>
+            <h4>No. of Students who Buy</h4>
+            {% for l in length1 %}
+            <h3 style="color: rgb(231, 52, 52);">{{ l }}</h3>
+            {% endfor %}
+          </div>
+          <div class="col-md-4">
+            <i class='bx bx-calendar nav_icon bx-lg'></i>
+            <br><br>
+            <h4>No. of Students who Reserve</h4>
+            {% for l in length2 %}
+            <h3 style="color: rgb(231, 52, 52);">{{ l }}</h3>
+            {% endfor %}
+          </div>
+          <div class="col-md-4">
+            <i class='bx bx-edit nav_icon bx-lg'></i>
+            <br><br>
+            <h4>No. of Students who Borrow</h4>
+            {% for l in length3 %}
+            <h3 style="color: rgb(231, 52, 52);">{{ l }}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="tableData overflow-auto">
+      <table class="table mt-4 table-hover" id="myTable">
+       <thead class="table-dark">
+        <tr>
+          <th>Equipments</th>
+          <th>Quantity Left</th>
+          <th>No. of borrowers</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in inventory %}
+        <tr>
+          <td>{{ i.equipment }}</td>
+          <td>{{ i.quantity }}</td>
+          <td>{{ i.borrowers }}</td>
+          <td>
+            <a href="{% url 'editequipment' i.id %}" class="btn btn-primary"> <i class='bx bx-edit nav_icon'></i></a>
+            <a href="{% url 'deleteequipment' i.id %}" class="btn btn-danger"> <i class='bx bx-trash nav_icon'></i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+     </div>
+     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inventoryModal"><i class='bx bx-plus-medical' ></i> Add Equipment</button>
+    </div>
+   </div>
+  </div>
+  <!--MODAL INVENTORY-->
+  <div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">Add Inventory</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+         <div class="col-md-12 mt-2">
+          <label for="" class="form-label">Equipment</label>
+          <input id="equip" type="text" class="form-control" placeholder="Enter Equipment" name="equipment" required>
+         </div>
+         <div class="col-md-12 mt-2">
+          <label for="" class="form-label">Quantity</label>
+          <input id="quants" type="number" class="form-control" name="quantity" placeholder="Enter Quantity" required>
+         </div>
+         <div class="col-md-12 mt-4 mb-2" style="text-align: right;">
+            <input type="hidden" id="borrow" name="borrowers" value="">
+          <button class="btn btn-primary" id="inventory" type="submit" name="addAttendance">Add Inventory</button>
+         </div>
+        </div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+ 
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://use.fontawesome.com/445d09784c.js"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script>
+    $(document).ready(function(){
+        $('#inventory').click(function(){
+            borrowData = $('#borrow').val('0');
+            document.getElementById("borrow").innerHTML =  borrowData;
+            console.log('eyy')
+        })
+    })
+  </script>
+  {% for message in messages %}
+  <script>
+      swal("{{message}}","");
+  </script>
+  {% endfor %}
+</body>
+
+</html>

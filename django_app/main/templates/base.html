@@ -170,7 +170,9 @@
                 d8 = $('#b8').val();
                 d9 = $('#b9').val();
                 d10 = $('#b10').val();
-                
+                d11 = $('#b11').val();
+                d12 = $('#b12').val();
+
                 if (d8 == 0){
                     swal('Please submit a specific quantity for the equipment to be borrowed!','')
                     $('#sub').prop('disabled', true);
@@ -187,7 +189,9 @@
                 document.getElementById('equips').innerHTML = "Equipment:" + " " + d7 ;
                 document.getElementById('quants').innerHTML = "Quantity:" + " " + d8 ;
                 document.getElementById('dob').innerHTML = "Date of Borrow:" + " " + d9 ;
-                document.getElementById('dor').innerHTML = "Date of Return:" + " " + d10 ;
+                document.getElementById('tob').innerHTML = "Time of Borrow:" + " " + d10 ;
+                document.getElementById('dor').innerHTML = "Date of Return:" + " " + d11 ;
+                document.getElementById('tor').innerHTML = "Time of Return:" + " " + d12 ;
             })
             $('#receipt2').click(function genPDF() {
                 a1 = $('#b1').val()
@@ -198,6 +202,9 @@
                 a6 = $('#b6').val()
                 a7 = $('#b7').val()
                 a8 = $('#b8').val()
+                a9 = $('#b9').val()
+                a10 = $('#b10').val()
+
                 var doc = new jsPDF();
                 doc.text(80, 20, "Order Details:");
                 doc.text(20, 40, "Fullname: " + a1);
@@ -208,6 +215,8 @@
                 doc.text(20, 90, "Total Quantity: " + a6);
                 doc.text(20, 100, "Date of Borrow: " + a7);
                 doc.text(20, 110, "Date of Return: " + a8);
+                doc.text(20, 120, "Time of Borrow: " + a9);
+                doc.text(20, 130, "Time of Return: " + a10);
                 doc.save('Student Receipt for Borrow: ' + a1 + '.pdf');
             })
         })

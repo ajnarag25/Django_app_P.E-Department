@@ -19,6 +19,7 @@ class Buy(models.Model):
     addresses = models.CharField(max_length=100)
     total = models.IntegerField()
     status = models.CharField(max_length=100)
+    note = models.CharField(max_length=1000)
 
 class Reserve(models.Model):
     idnum = models.CharField(max_length=100)
@@ -36,6 +37,7 @@ class Reserve(models.Model):
     size = models.CharField(max_length=100)
     total = models.IntegerField()
     status = models.CharField(max_length=100)
+    note = models.CharField(max_length=1000)
 
 class Borrow(models.Model):
     idnum = models.CharField(max_length=100)
@@ -49,7 +51,10 @@ class Borrow(models.Model):
     quantity = models.IntegerField()
     dateofborrow = models.CharField(max_length=100)
     dateofreturn = models.CharField(max_length=100)
+    timeofborrow = models.CharField(max_length=100)
+    timeofreturn = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
+    note = models.CharField(max_length=1000)
 
 
 class Inventory(models.Model):

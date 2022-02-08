@@ -84,8 +84,16 @@
                             <input name="dateofborrow" id="b9" type="date" class="form-control" required>
                         </div>
                         <div class="form-group col-md-6">
+                            <label for="d-borrow">Time of Borrow</label>
+                            <input name="timeofborrow" id="b10" type="time" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="d-return">Date of Return</label>
-                            <input name="dateofreturn" id="b10" type="date" class="form-control" required>
+                            <input name="dateofreturn" id="b11" type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="d-return">Time of Return</label>
+                            <input name="timeofreturn" id="b12" type="time" class="form-control" required>
                         </div>
                     </div>
                     <br>
@@ -95,6 +103,7 @@
                         <input type= "checkbox" id="checkbox1" required>
 	                    <label for = "checkbox1"> I Agree in terms and condition</label>
                         <input type="hidden" id="borrowStat" name="status" value="New">
+                        <input type="hidden" id="borrowNote" name="note" value="N/A">
                     </div>
                     <br>
                 
@@ -123,7 +132,9 @@
                     <h5 id="equips"></h5>
                     <h5 id="quants"></h5>
                     <h5 id="dob"></h5>
+                    <h5 id="tob"></h5>
                     <h5 id="dor"></h5>
+                    <h5 id="tor"></h5>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" id="sub" name="checkBorrow">Submit Form</button>

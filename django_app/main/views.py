@@ -14,36 +14,9 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def administrator(request):
+@login_required(login_url='login')
+def admin(request):
     if request.user.is_authenticated and request.user.is_superuser:
-
-        getDataInventory = Inventory.objects.all()
-
-        ids1 = request.POST.get('getId')
-        stat1 = request.POST.get('stats')
-        ids2 = request.POST.get('getId2')
-        stat2 = request.POST.get('stats2')
-        ids3 = request.POST.get('getId3')
-        stat3 = request.POST.get('stats3')
-
-        if ids1 != None and stat1 != None:
-            Buy.objects.filter(id = ids1).update(status=stat1)
-            messages.info(request,'Successfully Updated the status')
-
-        if ids2 != None and stat2 != None:
-            Reserve.objects.filter(id = ids2).update(status=stat2)
-            messages.info(request,'Successfully Updated the status')
-        
-        if ids3 != None and stat3 != None:
-            Borrow.objects.filter(id = ids3).update(status=stat3)
-            messages.info(request,'Successfully Updated the status')
-
-        inventory = InventoryForm(request.POST or None)   
-        if inventory.is_valid():
-            messages.info(request,'Successfully Added the Equipment')
-            inventory.save()
-
-        #READ/FETCH ALL THE DATABASE AND DISPLAY IN TABLES  
         buy_db = Buy.objects.all()
         reserve_db = Reserve.objects.all()
         borrow_db = Borrow.objects.all()
@@ -55,21 +28,96 @@ def administrator(request):
         store1 = [storeLen1]
         store2 = [storeLen2]
         store3 = [storeLen3]
-        
-        getdata ={
-            'buy_data': buy_db,
-            'reserve_data': reserve_db,
-            'borrow_data': borrow_db,
+
+        getDataInventory = Inventory.objects.all()
+
+        inventory = InventoryForm(request.POST or None)   
+
+        if inventory.is_valid():
+            messages.info(request,'Successfully Added the Equipment')
+            inventory.save()
+
+        context = {
             'inventory': getDataInventory,
             'length1': store1,
             'length2': store2,
             'length3': store3
-
-        }
-        return render(request, "administrator.html", getdata)
+        } 
+        return render(request, "admin.html", context)
 
     else:
         return redirect('index')
+
+@login_required(login_url='login')
+def adminBuy(request):
+    buy_db = Buy.objects.all()
+
+    ids1 = request.POST.get('getId')
+    stat1 = request.POST.get('stats')
+
+    getMsg1 = request.POST.get('note')
+    getIdmsg1 = request.POST.get('idMsg')    
+
+    if ids1 != None and stat1 != None:
+        Buy.objects.filter(id = ids1).update(status=stat1)
+        messages.info(request,'Successfully Updated the status')
+
+    if getMsg1 != None:
+        Buy.objects.filter(id = getIdmsg1).update(note=getMsg1)
+        messages.info(request,'Successfully submitted the message!')
+
+    context = {
+        'buy_data': buy_db,
+    }
+    return render(request, "buy_admin.html", context)
+
+@login_required(login_url='login')
+def adminReserve(request):
+    reserve_db = Reserve.objects.all()
+
+    ids2 = request.POST.get('getId2')
+    stat2 = request.POST.get('stats2')
+
+    
+    getMsg2 = request.POST.get('note')
+    getIdmsg2 = request.POST.get('idMsg')   
+
+    if ids2 != None and stat2 != None:
+        Reserve.objects.filter(id = ids2).update(status=stat2)
+        messages.info(request,'Successfully Updated the status')
+
+    if getMsg2 != None:
+        Reserve.objects.filter(id = getIdmsg2).update(note=getMsg2)
+        messages.info(request,'Successfully submitted the message!')
+
+    context = {
+        'reserve_data': reserve_db,
+    }
+
+    return render(request, "reserve_admin.html", context)
+
+@login_required(login_url='login')
+def adminBorrow(request):
+    borrow_db = Borrow.objects.all()
+
+    ids3 = request.POST.get('getId3')
+    stat3 = request.POST.get('stats3')
+
+    getMsg3 = request.POST.get('note')
+    getIdmsg3 = request.POST.get('idMsg')  
+
+    if ids3 != None and stat3 != None:
+        Borrow.objects.filter(id = ids3).update(status=stat3)
+        messages.info(request,'Successfully Updated the status')
+
+    if getMsg3 != None:
+        Borrow.objects.filter(id = getIdmsg3).update(note=getMsg3)
+        messages.info(request,'Successfully submitted the message!')
+
+    context ={
+        'borrow_data': borrow_db
+    }
+    return render(request, "borrow_admin.html", context)
 
 def loginuser(request):
     if request.user.is_authenticated:
@@ -85,7 +133,7 @@ def loginuser(request):
                 login(request, user)
 
                 if user.is_staff:
-                    return redirect('administrator')
+                    return redirect('admin')
                 else:
                     return redirect('index')
             
@@ -167,6 +215,8 @@ def borrow(request):
     b6 = request.POST.get('quantity')
     b7 = request.POST.get('dateofborrow')
     b8 = request.POST.get('dateofreturn')
+    b9 = request.POST.get('timeofborrow')
+    b10 = request.POST.get('timeofreturn')
 
     check = Inventory.objects.filter(equipment = getEquipment).values()
     for x in check:
@@ -192,6 +242,8 @@ def borrow(request):
             request.session['quantity'] = b6
             request.session['dateofborrow'] = b7
             request.session['dateofreturn'] = b8
+            request.session['timeofborrow'] = b9
+            request.session['timeofreturn'] = b10
             formborrow.save()
             return redirect('success2')
 
@@ -232,7 +284,7 @@ def editBuy(request, buy_id):
     if form.is_valid():
         messages.info(request,'Successfully Updated!')
         form.save()
-        return redirect('administrator')
+        return redirect('adminbuy')
 
     return render(request, 'buy_edit.html', context)
 
@@ -246,7 +298,7 @@ def deletebuy(request, buy_id):
     if request.method == "POST":
         messages.info(request,'Successfully Deleted!')
         buy_del.delete()
-        return redirect('administrator')
+        return redirect('adminbuy')
 
     return render(request, 'buy_delete.html', context)
 
@@ -261,7 +313,7 @@ def editReserve(request, reserve_id):
     if form.is_valid():
         messages.info(request,'Successfully Updated!')
         form.save()
-        return redirect('administrator')
+        return redirect('adminreserve')
 
     return render(request, 'reserve_edit.html', context)
 
@@ -275,7 +327,7 @@ def deletereserve(request, reserve_id):
     if request.method == "POST":
         messages.info(request,'Successfully Deleted!')
         reserve_del.delete()
-        return redirect('administrator')
+        return redirect('adminreserve')
 
     return render(request, 'reserve_delete.html', context)
 
@@ -292,7 +344,7 @@ def editBorrow(request, borrow_id):
     if form.is_valid():
         messages.info(request,'Successfully Updated!')
         form.save()
-        return redirect('administrator')
+        return redirect('adminborrow')
 
     return render(request, 'borrow_edit.html', context)
 
@@ -306,7 +358,7 @@ def deleteborrow(request, borrow_id):
     if request.method == "POST":
         messages.info(request,'Successfully Deleted!')
         borrow_del.delete()
-        return redirect('administrator')
+        return redirect('adminborrow')
 
     return render(request, 'borrow_delete.html', context)
 
@@ -322,7 +374,7 @@ def editEquipment(request, equipment_id):
     if equipment_form.is_valid():
         messages.info(request,'Successfully Updated!')
         equipment_form.save()
-        return redirect('administrator')
+        return redirect('admin')
 
     return render(request, 'inventory_edit.html', context)
 
@@ -337,7 +389,7 @@ def deleteequipment(request, equipment_id):
     if request.method == "POST":
         messages.info(request,'Successfully Deleted!')
         equipment_del.delete()
-        return redirect('administrator')
+        return redirect('admin')
 
     return render(request, 'inventory_delete.html', context)
 
@@ -400,6 +452,8 @@ def SuccessPage2(request):
     p6 = request.session['quantity']
     p7 = request.session['dateofborrow']
     p8 = request.session['dateofreturn']
+    p9 = request.session['timeofborrow']
+    p10 = request.session['timeofreturn']
 
     context ={
         'get1': p1,
@@ -409,7 +463,9 @@ def SuccessPage2(request):
         'get5': p5,
         'get6': p6,
         'get7': p7,
-        'get8': p8
+        'get8': p8,
+        'get9': p9,
+        'get10': p10
 
     }
 

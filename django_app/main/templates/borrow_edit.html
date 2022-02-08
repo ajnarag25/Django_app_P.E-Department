@@ -1,15 +1,45 @@
-{% extends "base2.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Student -- {% endblock %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <link href="{% static 'media/tup-logo.png' %}" rel="icon">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Admin -- P.E Department</title>
+</head>
 
-{% block content %}
+<body id="body-pd" class="bg-light">
+  <header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+  </header>
+  <div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+      <div> 
+        <a href="{% url 'admin' %}" class="nav_logo"> <img src="{% static 'media/tup-logo.png' %}" style="width: 30px;" alt=""> <span class="nav_logo-name">P.E <br> Department</span> </a>
+        <div class="nav_list">
+          <a href="{% url 'admin' %}" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard / <br> Add Equipment</span> </a>
+            <a href="{% url 'adminbuy' %}" class="nav_link ">  <i class='bx bx-cart nav_icon'></i> <span class="nav_name">Buy Uniform Table</span> </a>
+            <a href="{% url 'adminreserve' %}" class="nav_link ">  <i class='bx bx-calendar nav_icon '></i> <span class="nav_name">Reserve Uniform <br> Table</span> </a>
+            <a href="{% url 'adminborrow' %}" class="nav_link active"> <i class='bx bx-edit nav_icon'></i> <span class="nav_name">Borrow Equipment <br> Table</span> </a>
+        </div>
+      </div>
+      <a href="{% url 'logout' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Log out</span> </a>
+    </nav>
+  </div>
 
 <div class="jumbotron">
     <div class="container">
         <div class="card custom-container">
             <div class="text-center">
                 <h2 class="">Update Borrow Table</h2>
-                <hr>
+                <br>
             </div>
             <form method="POST">
                 {% csrf_token %}
@@ -56,10 +86,11 @@
                 </div>
                 <input type="hidden" class="form-control" name="status" value=" {{ borrow.status }}">
                 <input type="hidden" class="form-control" name="username" value=" {{ borrow.username }}">
+                <input type="hidden" class="form-control" name="note" value=" {{ borrow.note }}">
 
                 <div class="col-md-12 mt-4 mb-2" style="text-align: center;">
                 <button class="btn btn-primary" type="submit" name="update">Update</button>
-                <a href="{% url 'administrator' %}" class="btn btn-secondary" type="submit" name="back">Back</a>
+                <a href="{% url 'adminborrow' %}" class="btn btn-secondary" type="submit" name="back">Back</a>
                 </div>
                 </div>
             </form>
@@ -67,5 +98,12 @@
         </div>
     </div>
 
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://use.fontawesome.com/445d09784c.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
-{% endblock %}
+</body>
+</html>
