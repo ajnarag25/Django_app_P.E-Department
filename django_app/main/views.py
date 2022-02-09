@@ -1,4 +1,5 @@
 from getpass import getuser
+from tkinter import NO
 from django.contrib import auth
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
@@ -37,11 +38,39 @@ def admin(request):
             messages.info(request,'Successfully Added the Equipment')
             inventory.save()
 
+        checkInv = Inventory2.objects.values()
+        getInv2 = Inventory2.objects.all()
+
+        getInv = request.POST.get('inv2')
+        getQuants = request.POST.get('setquants')
+
+        if getInv == 'shirts' and getQuants != None:
+            for s1 in checkInv:
+                i1 = s1['shirts'] + int(getQuants)
+            Inventory2.objects.filter(id = 1).update(shirts=i1)
+            messages.info(request,'Successfully Added')
+        elif getInv == 'shorts' and getQuants != None:
+            for s2 in checkInv:
+                i2 = s2['shorts'] + int(getQuants)
+            Inventory2.objects.filter(id = 1).update(shorts=i2)
+            messages.info(request,'Successfully Added')
+        elif getInv == 'slacks' and getQuants != None:
+            for s3 in checkInv:
+                i3 = s3['slacks'] + int(getQuants)
+            Inventory2.objects.filter(id = 1).update(slacks=i3)
+            messages.info(request,'Successfully Added')
+        elif getInv == 'joggingpants' and getQuants != None:
+            for s4 in checkInv:
+                i4 = s4['joggingpants'] + int(getQuants)
+            Inventory2.objects.filter(id = 1).update(joggingpants=i4)
+            messages.info(request,'Successfully Added')
+                
         context = {
             'inventory': getDataInventory,
             'length1': store1,
             'length2': store2,
-            'length3': store3
+            'length3': store3,
+            'inventory2': getInv2
         } 
         return render(request, "admin.html", context)
 
@@ -119,7 +148,16 @@ def adminBorrow(request):
     }
     return render(request, "borrow_admin.html", context)
 
+def auto_addInventory():
+    getinv2 = Inventory2.objects.all()
+    getlength = len(getinv2)
+
+    if getlength == 0:
+        row = Inventory2()
+        row.save()
+
 def loginuser(request):
+    auto_addInventory()
     if request.user.is_authenticated:
         return redirect ('index')
     else:
@@ -148,7 +186,7 @@ def loginuser(request):
       
     
 @login_required(login_url='login')
-def index(request):
+def index(request): 
     return render(request, "index.html")
 
 
@@ -162,10 +200,27 @@ def buy(request):
     d5 = request.POST.get('mop')
     d6 = request.POST.get('addresses')
     d7 = request.POST.get('total')
+
+    c1 = request.POST.get('shirt')
+    c2 = request.POST.get('short')
+    c3 = request.POST.get('slacks')
+    c4 = request.POST.get('joggingpant')
+
     formbuy = BuyForm(request.POST or None)
     if request.method == 'POST':
         messages.info(request,'Something went wrong!')
         if formbuy.is_valid():
+            checkInv = Inventory2.objects.values()
+            if c1 != None or c2 != None or c3 != None or c4 != None:
+                for inv in checkInv:
+                    i1 = inv['shirts'] - int(c1)
+                    i2 = inv['shorts'] - int(c2)
+                    i3 = inv['slacks'] - int(c3)
+                    i4 = inv['joggingpants'] - int(c4)
+                    Inventory2.objects.filter(id = 1).update(shirts=i1)
+                    Inventory2.objects.filter(id = 1).update(shorts=i2)
+                    Inventory2.objects.filter(id = 1).update(slacks=i3)
+                    Inventory2.objects.filter(id = 1).update(joggingpants=i4)
             messages.info(request,'Successfully Submitted!')
             request.session['fullname'] = d1
             request.session['email'] = d2
@@ -186,11 +241,26 @@ def buy(request):
 
 @login_required(login_url='login')
 def reserve(request):
+    r1 = request.POST.get('shirt')
+    r2 = request.POST.get('short')
+    r3 = request.POST.get('slacks')
+    r4 = request.POST.get('joggingpant')
     getUser = request.session['username'] 
     formreserve = ReserveForm(request.POST or None)
     if request.method == 'POST':
         messages.info(request,'Something went wrong!')
         if formreserve.is_valid():
+            checkInv = Inventory2.objects.values()
+            if r1 != None or r2 != None or r3 != None or r4 != None:
+                for inv in checkInv:
+                    i1 = inv['shirts'] - int(r1)
+                    i2 = inv['shorts'] - int(r2)
+                    i3 = inv['slacks'] - int(r3)
+                    i4 = inv['joggingpants'] - int(r4)
+                    Inventory2.objects.filter(id = 1).update(shirts=i1)
+                    Inventory2.objects.filter(id = 1).update(shorts=i2)
+                    Inventory2.objects.filter(id = 1).update(slacks=i3)
+                    Inventory2.objects.filter(id = 1).update(joggingpants=i4)
             messages.info(request,'Successfully submitted please wait for the confirmation in your order, kindly check your transaction for the meantime if it is available for pick up')
             formreserve.save()
             return redirect('index')

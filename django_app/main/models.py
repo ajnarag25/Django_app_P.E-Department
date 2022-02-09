@@ -63,3 +63,8 @@ class Inventory(models.Model):
     borrowers = models.IntegerField()
 
 
+class Inventory2(models.Model):
+    shirts = models.IntegerField(default=0)
+    shorts = models.IntegerField(default=0)
+    slacks = models.IntegerField(default=0)
+    joggingpants = models.IntegerField(default=0)

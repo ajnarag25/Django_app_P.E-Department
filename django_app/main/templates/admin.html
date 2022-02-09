@@ -65,7 +65,49 @@
         </div>
       </div>
     </div>
-    <br><br>
+    <div class="tableData overflow-auto">
+      <table class="table mt-4 table-hover" id="myTable">
+       <thead class="table-dark">
+        <tr>
+          <th></th>
+          <th>Shirts</th>
+          <th>Shorts</th>
+          <th>Slacks</th>
+          <th>Joggingpants</th>
+          <th>Select Inventory</th>
+          <th>Set Quantity</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i2 in inventory2 %}
+        <tr>
+          <td>Quantity left:</td>
+          <td>{{ i2.shirts }}</td>
+          <td>{{ i2.shorts }}</td>
+          <td>{{ i2.slacks }}</td>
+          <td>{{ i2.joggingpants }}</td>
+          <td>
+            <form method="POST">
+              {% csrf_token %}
+              <select name="inv2" id="" class="form-select">
+                <option selected disabled="true">--Select Inventory--</option>
+                <option value="shirts">Shirts</option>
+                <option value="shorts">Shorts</option>
+                <option value="slacks">Slacks</option>
+                <option value="joggingpants">Joggingpants</option>
+              </select>
+          </td>
+          <td><input class="form-control" type="number" name="setquants" placeholder="Enter Quantity" required></td>
+          <td>
+            <button class="btn btn-success" type="submit" name="submitInv">Add Stock</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+     </div>
     <div class="tableData overflow-auto">
       <table class="table mt-4 table-hover" id="myTable">
        <thead class="table-dark">
@@ -95,6 +137,7 @@
     </div>
    </div>
   </div>
+
   <!--MODAL INVENTORY-->
   <div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
