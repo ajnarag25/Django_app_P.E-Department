@@ -11,3 +11,8 @@ Web Application for P.E Department. Back-end function using django.
 
 CLICK THIS LINK TO VISIT THE OFFICIAL WEBSITE:
 http://pedept22.pythonanywhere.com/
+
+ADMIN:
+
+- Username: admin123
+- Password: admin123
