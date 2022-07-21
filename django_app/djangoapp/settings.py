@@ -81,7 +81,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3307',
+        'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode= 'STRICT_TRANS_TABLES'",
         }
@@ -135,3 +135,11 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Email Settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'pedepartment2022@gmail.com'
+EMAIL_HOST_PASSWORD = 'gvcokdwmfkkqabvj'
+EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = True

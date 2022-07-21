@@ -1,4 +1,5 @@
 from getpass import getuser
+from inspect import getmembers
 from tkinter import NO
 from django.contrib import auth
 from django.shortcuts import redirect, render
@@ -9,6 +10,8 @@ from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+from django.core.mail import send_mail
 
 #from django.contrib.auth import authenticate, login
 #from django.contrib import messages
@@ -187,6 +190,21 @@ def loginuser(request):
     
 @login_required(login_url='login')
 def index(request): 
+
+    if request.method == 'POST':
+            
+        getname = request.POST.get('txtName')
+        getemail = request.POST.get('txtEmail')
+        getphone = request.POST.get('txtPhone')
+        getmessage = request.POST.get('txtMsg')
+
+        send_mail(
+            getname,
+            getmessage,
+            getemail,
+            ['pedepartment2022@gmail.com'],
+        )
+
     return render(request, "index.html")
 
 
